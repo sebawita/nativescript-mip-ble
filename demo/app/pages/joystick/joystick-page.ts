@@ -1,12 +1,10 @@
 import { EventData } from "data/observable";
 import { Page } from "ui/page";
-import { ControllerViewModel } from "./controller-view-model";
+import { JoyStickViewModel } from "./joystick-view-model";
 
-
+// Event handler for Page "navigatingTo" event attached in main-page.xml
 export function navigatingTo(args: EventData) {
     // Get the event sender
     var page = <Page>args.object;
-    var mip = page.navigationContext.mipDevice;
-
-    page.bindingContext = new ControllerViewModel(mip);
+    page.bindingContext = new JoyStickViewModel();
 }

@@ -1,0 +1,36 @@
+<Page navigatingTo="navigatingTo"
+  xmlns:drawer="nativescript-telerik-ui/sidedrawer"
+  xmlns:dc="pages/drawer">
+  <Page.actionBar>
+    <ActionBar class="action-bar" title="Sound"></ActionBar>
+  </Page.actionBar>
+
+  <drawer:RadSideDrawer id="sideDrawer" drawerLocation="Left">
+    
+    <drawer:RadSideDrawer.drawerTransition>
+      <drawer:RevealTransition/>
+    </drawer:RadSideDrawer.drawerTransition>
+    
+      <drawer:RadSideDrawer.drawerContent>
+        <dc:drawer-content />
+      </drawer:RadSideDrawer.drawerContent>
+
+      <drawer:RadSideDrawer.mainContent>
+        <StackLayout>    
+          <Label text="{{ 'Volume: ' + volume }}" />
+          <Slider minValue="0" maxValue="7" value="{{ volume }}" />
+
+          <Label text="{{ 'Sound Index: ' + soundIndex }}" />
+          <Slider minValue="1" maxValue="106" value="{{ soundIndex }}" />
+
+          <Label text="{{ 'Sound Delay: ' + soundDelay }}" />
+          <Slider minValue="0" maxValue="255" value="{{ soundDelay }}" />
+
+          <Label text="{{ 'Sound Repeat: ' + soundRepeat }}" />
+          <Slider minValue="0" maxValue="10" value="{{ soundRepeat }}" />
+
+          <Button text="Play sound" tap="{{ playSound }}" />
+        </StackLayout>
+      </drawer:RadSideDrawer.mainContent>
+    </drawer:RadSideDrawer>
+</Page>

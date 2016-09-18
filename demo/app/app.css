@@ -1,6 +1,21 @@
-﻿.message {
-  color: #000;
-  font-size: 20;
-  horizontal-align: center;
-  padding:20;
+﻿.action-bar {
+    background-color: #ef473a;
+    color: #fff;
+}
+
+.drawerContent {
+    background-color: gray;
+}
+
+.drawerContentText {
+    font-size: 13;
+    padding: 10;
+}
+
+.drawerContentButton {
+    margin: 10;
+    horizontal-align: left;
+}
+.drawerSectionItem {
+    padding: 10;
 }

@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "nativescript-accelerometer": "^0.3.2",
-    "nativescript-joystick": "^0.3.0",
+    "nativescript-joystick": "^0.4.2",
     "nativescript-mip-ble": "file:..",
     "nativescript-telerik-ui": "^1.4.0",
     "tns-core-modules": "^2.2.0"

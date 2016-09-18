@@ -5,6 +5,7 @@ import {MipDevice} from "nativescript-mip-ble/mip-device";
 //import {MipDevice} from "../../services/mip-device";
 
 import {RadListView, ListViewEventData} from "nativescript-telerik-ui/listview";
+import {AllMips} from "../../all-mips";
 
 export class ScanViewModel extends observable.Observable {
 
@@ -24,17 +25,11 @@ export class ScanViewModel extends observable.Observable {
 
     public connect(args) {
         var mipDevice: MipDevice = this.scanner.devicesAround.getItem(args.itemIndex);
-        mipDevice.connect().then((UUID) => {
-            //alert("Connected to " + UUID);
-
-            var navigationEntry = {
-                moduleName: "pages/controller/controller-page",
-                context: {mipDevice: mipDevice},
-                animated: false,
-                backstackVisible: false
-            };
-
-            frameModule.topmost().navigate(navigationEntry);
+        // mipDevice.connect(this.onDisconnected)
+        mipDevice.connect()
+        .then((UUID) => {
+            AllMips.addMipDevice(mipDevice);
+            alert("Device Connected");
         })
     }
 
@@ -50,5 +45,9 @@ export class ScanViewModel extends observable.Observable {
                 listView.notifyPullToRefreshFinished();
                 alert("error while scanning: " + err);
             });
+    }
+
+    private onDisconnected(mip: MipDevice) {
+        AllMips.removeMip(mip);
     }
 }

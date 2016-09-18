@@ -1,0 +1,26 @@
+<Page navigatingTo="navigatingTo"
+  xmlns:drawer="nativescript-telerik-ui/sidedrawer"
+  xmlns:dc="pages/drawer">
+  <Page.actionBar>
+    <ActionBar class="action-bar" title="Accelerometer"></ActionBar>
+  </Page.actionBar>
+
+  <drawer:RadSideDrawer id="sideDrawer" drawerLocation="Left">
+    
+    <drawer:RadSideDrawer.drawerTransition>
+      <drawer:RevealTransition/>
+    </drawer:RadSideDrawer.drawerTransition>
+    
+      <drawer:RadSideDrawer.drawerContent>
+        <dc:drawer-content />
+      </drawer:RadSideDrawer.drawerContent>
+
+      <drawer:RadSideDrawer.mainContent>
+        <StackLayout>
+          <Button text="Start" tap="{{ startAccelerometer }}" />
+          <Button text="Stop" tap="{{ stopAccelerometer }}" />
+          <!--<Button text="Switch Gear" tap="{{ switchGear }}" />-->
+        </StackLayout>
+      </drawer:RadSideDrawer.mainContent>
+    </drawer:RadSideDrawer>
+</Page>

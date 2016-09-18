@@ -1,0 +1,14 @@
+<StackLayout cssClass="drawerContent">
+    <StackLayout cssClass="headerContent">
+    <Label text="Navigation Menu"/>
+    </StackLayout>
+    <ScrollView>
+    <StackLayout cssClass="drawerMenuContent">
+        <Label text="Scanner" cssClass="drawerSectionHeader" tap="navigateToScanner" />
+        <Label text="Arrows" cssClass="drawerSectionItem" tap="navigateToArrows" />
+        <Label text="Accelerometer" cssClass="drawerSectionItem" tap="navigateToAccelerometer" />
+        <Label text="Joystick" cssClass="drawerSectionItem" tap="navigateToJoystick" />
+        <Label text="Sound" cssClass="drawerSectionItem" tap="navigateToSound" />
+    </StackLayout>
+    </ScrollView>
+</StackLayout>
