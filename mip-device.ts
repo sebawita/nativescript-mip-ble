@@ -2,7 +2,9 @@ import {Observable} from "data/observable";
 var bluetooth = require("nativescript-bluetooth");
 
 import {codes} from "./codes";
+import {HeadLightState} from "./mip-types";
 import {MipController} from "./mip-controller";
+import {MipStatusReader} from "./mip-status-reader";
 
 export class MipDevice extends Observable {
     public UUID: string;
@@ -10,6 +12,8 @@ export class MipDevice extends Observable {
     public state: string; 
 
     public mipController: MipController;
+    public mipStatusReader: MipStatusReader;
+
 
     constructor(UUID, name, state) {
         super();
@@ -18,7 +22,7 @@ export class MipDevice extends Observable {
         this.state = state;
     }
 
-    public connect(): Promise<any> {
+    public connect(disconnectFn: (MipDevice)=>any ): Promise<any> {
         return new Promise((resolve, reject) => {
             bluetooth.connect({
                 UUID: this.UUID,
@@ -27,9 +31,14 @@ export class MipDevice extends Observable {
                     console.log("Periperhal connected with UUID: " + peripheral.UUID);
 
                     this.mipController = new MipController(this.UUID);
+                    this.mipStatusReader = new MipStatusReader(this.UUID);
+
                     resolve(this.UUID);
                 }),
                 onDisconnected: function (peripheral) {
+                    if(disconnectFn)
+                        disconnectFn(this);
+
                     alert("Device disconnected");
                 }
             });
@@ -40,32 +49,14 @@ export class MipDevice extends Observable {
         return bluetooth.disconnect(this.UUID);
     }
 
-    
-    private executeInstruction(instructionCode: string, params: Array<number>) {
-        //Parse instruction parameters -> convert each value into a hex string and then concatenate them to a comma separated string
-        var instructionParams = params.map(param => {
-            return convertToHexString(param);
-        }).join(",");
-
-        //Prepare a bluetooth message using the connected device UUID, instruction code and instruction parameters
-        var bluetoothMessage: any = {
-            peripheralUUID: this.UUID,
-            serviceUUID: 'ffe5',
-            characteristicUUID: 'ffe9',
-            value: instructionCode + "," + instructionParams
-        }
-
-        //Send the call via bluetooth
-        bluetooth.writeWithoutResponse(bluetoothMessage);
-    }
-
     //speed     [-1]-[0] Back speed / [0]-[1] Forward
     //turnspeed [-1]-[0] Left : [0]-[1] Right
-    public moveAcc(speed, turnSpeed) {
+    public drive(speed, turnSpeed) {
         speed = this.convertSpeed(speed);
         turnSpeed = this.convertTurnSpeed(turnSpeed);
 
-        this.executeInstruction(codes.ContinousDrive, [speed, turnSpeed]);
+        //this.executeInstruction(codes.ContinousDrive, [speed, turnSpeed]);
+        this.mipController.continousDrive(speed, turnSpeed);
     }
 
     private convertSpeed(speed) {
@@ -92,7 +83,6 @@ export class MipDevice extends Observable {
             return Math.round(-turnSpeed * 0x20 + 0x60);
             
         return Math.round(turnSpeed * 0x20 + 0x40);
-        
     }
 
     //Speed fwd 0x01 (slow) - 0x20 (fast) / bwd 0x21 (slow) - 0x40 (fast)
@@ -101,7 +91,8 @@ export class MipDevice extends Observable {
         var repeat = 5;
 
         var loop = setInterval( () => {
-            this.executeInstruction(codes.ContinousDrive, [speed, turn]);
+            //this.executeInstruction(codes.ContinousDrive, [speed, turn]);
+            this.mipController.continousDrive(speed, turn);
 
             if(repeat-- < 0)
                 clearInterval(loop);
@@ -125,6 +116,23 @@ export class MipDevice extends Observable {
         this.move(forwardSpeed, turnSpeed + 0x40);
     }
 
+    getOdometer() {
+        this.mipStatusReader.getOdometer()
+        .then( (res) => {
+            alert("getOdometer:" + JSON.stringify(res));
+        } );
+    }
+
+    getStatus() {
+        this.mipStatusReader.getMipStatus()
+        .then( (res) => {
+            alert("getMipStatus res:" + JSON.stringify(res));
+        } );
+    }
+
+   setHeadLED(light1: HeadLightState, light2: HeadLightState, light3: HeadLightState, light4: HeadLightState) {
+        this.mipController.setHeadLED(light1, light2, light3, light4);
+    }
 }
 
 
