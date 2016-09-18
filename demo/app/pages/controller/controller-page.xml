@@ -1,0 +1,100 @@
+<Page navigatingTo="navigatingTo">
+
+  <StackLayout>
+    
+    <Label text="{{ 'name:' + name }}" textWrap="true" />
+    
+    
+    
+    <TabView id="tabViewContainer">
+        <TabView.items>
+            <TabViewItem title="Test">
+                <TabViewItem.view>
+                    <StackLayout>    
+                        <Button text="Test 1" tap="{{ test1 }}" />
+                        <Button text="Test 2" tap="{{ test2 }}" />
+                        <Button text="Test 3" tap="{{ test3 }}" />
+                        <Button text="Test 4" tap="{{ test4 }}" />
+                    </StackLayout>
+                </TabViewItem.view>
+            </TabViewItem>
+            <TabViewItem title="Arrows">
+                <TabViewItem.view>
+                    <StackLayout>
+        
+                        <Label text="{{ 'Speed:' + speed}}" textWrap="true" />
+                        <Slider minValue="0" maxValue="0x20" value="{{ speed }}" />
+
+                        <Label text="{{ 'Turn Speed:' + turnSpeed}}" textWrap="true" />
+                        <Slider minValue="0" maxValue="0x20" value="{{ turnSpeed }}" />
+
+                        <Button text="Forward" tap="{{ moveForward }}" />
+
+                        <DockLayout orientation="horizontal">
+                            <Button dock="left" text="Left" tap="{{ turnLeft }}" />
+                            <Button dock="right" text="Right" tap="{{ turnRight }}" />
+                        </DockLayout>
+
+                        <Button text="Back" tap="{{ moveBack }}" />
+                    </StackLayout>
+                </TabViewItem.view>
+            </TabViewItem>
+            <TabViewItem title="Accelerometer">
+                <TabViewItem.view>
+                    <StackLayout>
+                        <Button text="Start" tap="{{ startAccelerometer }}" />
+                        <Button text="Stop" tap="{{ stopAccelerometer }}" />
+                        <!--Label text="{{ 'x:' + x }}" />
+                        <Label text="{{ 'y:' + y }}" />
+                        <Label text="{{ 'z:' + z }}" /-->
+
+                        <Button text="Switch Gear" touch="{{ slow }}" />
+                        
+                    </StackLayout>
+                </TabViewItem.view>
+            </TabViewItem>
+            <TabViewItem title="Joystick" xmlns:js="nativescript-joystick">
+                <TabViewItem.view>
+                    <StackLayout>
+                        <Button text="Start" tap="{{ startJoystick }}" />
+                        <Button text="Stop" tap="{{ stopJoystick }}" />
+                        <StackLayout orientation="horizontal">
+                            <js:JoyStick
+                                padColor="black"
+                                buttonColor="white"
+                                width="50%"
+                                vertical="{{y}}">
+                            </js:JoyStick>
+                            <js:JoyStick
+                                padColor="blue"
+                                buttonColor="red"
+                                width="50%"
+                                horizontal="{{x}}">
+                            </js:JoyStick>
+                        </StackLayout>
+                    </StackLayout>
+                </TabViewItem.view>
+            </TabViewItem>
+            <TabViewItem title="Sound">
+                <TabViewItem.view>
+                    <StackLayout>    
+                        <Label text="{{ 'Volume: ' + volume }}" />
+                        <Slider minValue="0" maxValue="7" value="{{ volume }}" />
+
+                        <Label text="{{ 'Sound Index: ' + soundIndex }}" />
+                        <Slider minValue="1" maxValue="106" value="{{ soundIndex }}" />
+
+                        <Label text="{{ 'Sound Delay: ' + soundDelay }}" />
+                        <Slider minValue="0" maxValue="255" value="{{ soundDelay }}" />
+
+                        <Label text="{{ 'Sound Repeat: ' + soundRepeat }}" />
+                        <Slider minValue="0" maxValue="10" value="{{ soundRepeat }}" />
+
+                        <Button text="Play sound" tap="{{ playSound }}" />
+                    </StackLayout>
+                </TabViewItem.view>
+            </TabViewItem>
+        </TabView.items>
+    </TabView>
+  </StackLayout>
+</Page>

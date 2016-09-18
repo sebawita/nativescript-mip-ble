@@ -1,0 +1,23 @@
+<Page xmlns:lv="nativescript-telerik-ui/listview" navigatingTo="navigatingTo">
+  <DockLayout >
+
+    <Button dock="top" text="GetPermissions" tap="{{ getPermissions }}" />
+    <Button dock="top" text="Scan" tap="{{ scan }}" />
+
+    <lv:RadListView 
+            items="{{ scanner.devicesAround }}"
+            pullToRefresh="true" pullToRefreshInitiated="{{ scan }}"
+            itemTap="{{ connect }}">
+      <lv:RadListView.listViewLayout>
+            <lv:ListViewLinearLayout scrollDirection="Vertical"/>
+        </lv:RadListView.listViewLayout>
+        <lv:RadListView.itemTemplate>
+          <StackLayout orientation="vertical" padding="5 10 5 10"  style="background-color: #7fff7f;">
+            <Label text="{{ 'UUID:' + UUID }}" />
+            <Label text="{{ 'name:' + name }}" />
+            <Label text="{{ 'state:' + state }}" />
+          </StackLayout>
+      </lv:RadListView.itemTemplate>
+    </lv:RadListView>
+  </DockLayout>
+</Page>

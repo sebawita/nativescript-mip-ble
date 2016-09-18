@@ -1,0 +1,13 @@
+demo/
+*.png
+*.log
+*.map
+*.ts
+!index.d.ts
+
+!bluetooth.scanner.ts
+!codes.ts
+!mip-controller.ts
+!mip-device.ts
+!mip-status-reader.ts
+!mip-types.ts
