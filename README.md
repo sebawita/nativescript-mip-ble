@@ -11,8 +11,6 @@ npm run preparedemo
 
 ### To run the demo project:
 
-
-
 ```
 cd demo
 

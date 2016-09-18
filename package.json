@@ -1,6 +1,6 @@
 {
   "name": "nativescript-mip-ble",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "NativeScript plugin that allows to control a Mip robot.",
   "main": "mip.js",
   "typings": "index.d.ts",
