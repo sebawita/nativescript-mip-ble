@@ -1,0 +1,12 @@
+<GridLayout rows="auto *">
+
+  <GridLayout columns="* * *" backgroundColor="lightblue">
+    <Button text="scan" [nsRouterLink]="['/scan']"></Button>
+    <Button text="arrows" col="1" [nsRouterLink]="['/arrows']"></Button>
+    <Button text="accel" col="2" [nsRouterLink]="['/accelerometer']"></Button>
+  </GridLayout>
+
+  <GridLayout row="1" margin="12">
+    <router-outlet></router-outlet>
+  </GridLayout>
+</GridLayout>
