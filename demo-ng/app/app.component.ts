@@ -3,8 +3,14 @@ import {Component} from "@angular/core";
 @Component({
     selector: "my-app",
     template: `
-    <GridLayout>
-        <mip-scan></mip-scan>
+    <GridLayout rows="auto *" columns="* * *">
+        <Button text="scan" [nsRouterLink]="['/']"></Button>
+        <Button text="arrows" col="1" [nsRouterLink]="['/arrows']" ></Button>
+        <Button text="accel" col="2"></Button>
+        
+        <GridLayout row="1" colSpan="3">        
+          <router-outlet></router-outlet>
+        </GridLayout>
     </GridLayout>`,
 })
 export class AppComponent {

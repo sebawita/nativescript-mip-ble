@@ -1,0 +1,17 @@
+<StackLayout>
+
+  <Label [text]="'Speed:' + speed" textWrap="true"></Label>
+  <Slider minValue="0" maxValue="32" [(ngModel)]="speed"></Slider>
+
+  <Label text="{{ 'Turn Speed:' + turnSpeed}}" textWrap="true"></Label>
+  <Slider minValue="0" maxValue="32" [(ngModel)]="turnSpeed"></Slider>
+
+  <Button text="Forward" (tap)="moveForward()"></Button>
+
+  <DockLayout orientation="horizontal">
+    <Button dock="left" text="Left" (tap)="turnLeft()" width="50%"></Button>
+    <Button dock="right" text="Right" (tap)="turnRight()" width="50%"></Button>
+  </DockLayout>
+
+  <Button text="Back" (tap)="moveBack()"></Button>
+</StackLayout>
