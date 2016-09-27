@@ -1,0 +1,24 @@
+<DockLayout>
+  <Button dock="top" text="GetPermissions" (tap)="getPermissions()"></Button>
+  <Button dock="top" text="Scan" (tap)="scan()"></Button>
+
+  <ListView [items]="scanner.devicesAround" (itemTap)="connect($event)">
+    <!--<lv:RadListView.listViewLayout>
+          <lv:ListViewLinearLayout scrollDirection="Vertical"/>
+      </lv:RadListView.listViewLayout>-->
+    <!--<lv:RadListView.itemTemplate>
+        <StackLayout orientation="vertical" padding="5 10 5 10"  style="background-color: #7fff7f;">
+          <Label text="{{ 'UUID:' + UUID }}" />
+          <Label text="{{ 'name:' + name }}" />
+          <Label text="{{ 'state:' + state }}" />
+        </StackLayout>
+    </lv:RadListView.itemTemplate>-->
+    <template let-item="item">
+      <StackLayout padding="5 10 5 10"  style="background-color: #7fff7f;">
+        <Label [text]="item.UUID"></Label>
+        <Label [text]="item.name"></Label>
+        <Label [text]="item.state"></Label>
+      </StackLayout>
+    </template>
+  </ListView>
+</DockLayout>
