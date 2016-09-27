@@ -23,14 +23,14 @@
           <Label text="{{ 'Turn Speed:' + turnSpeed}}" textWrap="true" />
           <Slider minValue="0" maxValue="0x20" value="{{ turnSpeed }}" />
 
-          <Button text="Forward" tap="{{ moveForward }}" />
+          <Button text="Forward" tap="{{ moveForward }}" height="10%" />
 
-          <DockLayout orientation="horizontal">
-            <Button dock="left" text="Left" tap="{{ turnLeft }}" width="50%" />
-            <Button dock="right" text="Right" tap="{{ turnRight }}" width="50%" />
+          <DockLayout orientation="horizontal" height="10%" width="100%">
+            <Button dock="left" text="Left" tap="{{ turnLeft }}" width="49%"  />
+            <Button text="Right" tap="{{ turnRight }}" />
           </DockLayout>
 
-          <Button text="Back" tap="{{ moveBack }}" />
+          <Button text="Back" tap="{{ moveBack }}" height="10%" />
         </StackLayout>
       </drawer:RadSideDrawer.mainContent>
     </drawer:RadSideDrawer>
