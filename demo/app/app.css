@@ -29,3 +29,8 @@ Button {
     border-width: 5;
     margin: 2;
 }
+
+.dropdown {
+    font-size: 30;
+    margin: 5, 5, 5, 5;
+}
