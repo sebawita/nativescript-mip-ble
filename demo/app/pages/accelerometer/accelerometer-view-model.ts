@@ -1,7 +1,7 @@
-import {Observable} from "data/observable";
-import {startAccelerometerUpdates, stopAccelerometerUpdates} from "nativescript-accelerometer"
+import { Observable } from "data/observable";
+import { startAccelerometerUpdates, stopAccelerometerUpdates } from "nativescript-accelerometer"
 
-import {AllMips} from "../../all-mips";
+import { AllMips } from "../../all-mips";
 
 export class AccelerometerViewModel extends Observable {
     private turnSpeed: number = 0;
@@ -13,21 +13,21 @@ export class AccelerometerViewModel extends Observable {
     private loop: number = null;
 
     public startAccelerometer() {
-        if(this.accelerometerActive)
+        if (this.accelerometerActive)
             return;
 
         this.accelerometerActive = true;
 
-        startAccelerometerUpdates( data => {
+        startAccelerometerUpdates(data => {
             this.turnSpeed = data.x * this.gear; // left (0 to -1) / right (0 to 1)
             this.speed = data.y * this.gear; // lean forward (0 to -1) / back (0 to 1)
-        } )
+        })
 
         this.startContinousMove();
     }
 
     public stopAccelerometer() {
-        if(this.accelerometerActive) {
+        if (this.accelerometerActive) {
             stopAccelerometerUpdates();
             this.accelerometerActive = false;
 
@@ -36,10 +36,10 @@ export class AccelerometerViewModel extends Observable {
     }
 
     public startContinousMove() {
-        if(this.loop)
+        if (this.loop)
             return;
 
-        this.loop = setInterval( () => {
+        this.loop = setInterval(() => {
             AllMips.drive(this.speed, this.turnSpeed);
         }, 50);
     }
@@ -48,8 +48,6 @@ export class AccelerometerViewModel extends Observable {
         clearInterval(this.loop);
         this.loop = null;
     }
-
-    public switchGear() {
-        this.gear = 1 / this.gear;
-    }
 }
+
+export var Accelerometer = new AccelerometerViewModel();

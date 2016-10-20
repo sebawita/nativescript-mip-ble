@@ -1,6 +1,6 @@
-import {Observable} from "data/observable";
+import { Observable } from "data/observable";
 
-import {AllMips} from "../../all-mips";
+import { AllMips } from "../../all-mips";
 
 export class JoyStickViewModel extends Observable {
     private turnSpeed: number = 0;
@@ -9,9 +9,9 @@ export class JoyStickViewModel extends Observable {
     private loop: number = null;
 
     public startJoystick() {
-        if(this.loop)
+        if (this.loop)
             return;
-            
+
         this.startContinousMove();
     }
 
@@ -22,10 +22,20 @@ export class JoyStickViewModel extends Observable {
     }
 
     public startContinousMove() {
-        if(this.loop)
+        if (this.loop)
             return;
 
-        this.loop = setInterval( () => {
+        this.loop = setInterval(() => {
+            if (this.speed > 1)
+                this.speed = 1;
+            else if (this.speed < -1)
+                this.speed = -1;
+
+            if (this.turnSpeed > 1)
+                this.turnSpeed = 1;
+            else if (this.turnSpeed < -1)
+                this.turnSpeed = -1;
+
             AllMips.drive(this.speed, this.turnSpeed);
         }, 50);
     }
@@ -36,3 +46,5 @@ export class JoyStickViewModel extends Observable {
     }
 
 }
+
+export var JoyStick = new JoyStickViewModel();

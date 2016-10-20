@@ -25,8 +25,7 @@ export class ScanViewModel extends observable.Observable {
 
     public connect(args) {
         var mipDevice: MipDevice = this.scanner.devicesAround.getItem(args.itemIndex);
-        // mipDevice.connect(this.onDisconnected)
-        mipDevice.connect()
+        mipDevice.connect(this.onDisconnected)
         .then((UUID) => {
             AllMips.addMipDevice(mipDevice);
             alert("Device Connected");
@@ -51,3 +50,5 @@ export class ScanViewModel extends observable.Observable {
         AllMips.removeMip(mip);
     }
 }
+
+export var Scanner = new ScanViewModel();

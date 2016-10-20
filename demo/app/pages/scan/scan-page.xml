@@ -13,9 +13,7 @@
     </drawer:RadSideDrawer.drawerTransition>
     
       <drawer:RadSideDrawer.drawerContent>
-      <!-- >> (hide) -->
         <dc:drawer-content />
-        <!-- << (hide) -->
       </drawer:RadSideDrawer.drawerContent>
 
       <drawer:RadSideDrawer.mainContent>
