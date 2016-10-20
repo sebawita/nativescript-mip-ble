@@ -1,8 +1,8 @@
-import {Observable} from "data/observable";
-import {ObservableArray} from "data/observable-array";
+import { Observable } from "data/observable";
+import { ObservableArray } from "data/observable-array";
 var bluetooth = require("nativescript-bluetooth");
 
-import {MipDevice} from "./mip-device";
+import { MipDevice } from "./mip-device";
 
 export class BluetoothScanner extends Observable {
     public devicesAround: ObservableArray<MipDevice>;
@@ -20,24 +20,20 @@ export class BluetoothScanner extends Observable {
         this.devicesAround.splice(0);
 
         return bluetooth.startScanning({
-                serviceUUIDs: [],
-                seconds: 3,
+            serviceUUIDs: [],
+            seconds: 3,
             onDiscovered: peripheral => {
-                if(peripheral.UUID === null)
-                    peripheral.UUID = "no UUID";
-
-                if(peripheral.name === null)
-                    peripheral.name = "no name";
-
-                if(peripheral.state === null)
-                    peripheral.state = "no state";
+                if (peripheral.name === null) {
+                    console.log("Skipping a periperhal without a name with UUID:" + peripheral.UUID);
+                    return;
+                }
 
                 console.log("");
                 console.log("Periperhal found with UUID: " + peripheral.UUID);
                 console.log("Periperhal found with name: " + peripheral.name);
                 console.log("Periperhal found with state: " + peripheral.state);
 
-                this.devicesAround.push( new MipDevice(peripheral.UUID, peripheral.name, peripheral.state));
+                this.devicesAround.push(new MipDevice(peripheral.UUID, peripheral.name, peripheral.state));
             }
         });
     }
@@ -45,8 +41,8 @@ export class BluetoothScanner extends Observable {
 
     initialisePermissionsIfRequired() {
         this.hasPermissions()
-            .then( granted => {
-                if(granted == false) {
+            .then(granted => {
+                if (granted == false) {
                     console.log("Requesting permissions");
                     this.requestPermissions();
                 }
@@ -59,7 +55,7 @@ export class BluetoothScanner extends Observable {
 
     requestPermissions() {
         bluetooth.requestCoarseLocationPermission().then(
-            function() {
+            function () {
                 console.log("Location permission requested");
             }
         );
