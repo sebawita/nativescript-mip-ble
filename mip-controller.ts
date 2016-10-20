@@ -187,9 +187,16 @@ export class MipController  {
      * @param turn Right 0x41 (slow) - 0x60 (fast) / Left 0x61 (slow) - 0x80 (fast)
      */
     continousDrive(speed, turn) {
-        speed = ensureBoundaries(speed, 0, 0x40);
-        turn = ensureBoundaries(turn, 0x40, 0x80);
+        if(speed < 0x81)
+            speed = ensureBoundaries(speed, 0, 0x40);
+        else
+            speed = ensureBoundaries(speed, 0x81, 0xC0);
         
+        if(turn < 0xC1)
+            turn = ensureBoundaries(turn, 0x40, 0x80);
+        else
+            turn = ensureBoundaries(turn, 0xC1, 0xFF);
+
         this.executeInstructionFast(codes.ContinousDrive, [speed, turn]);
     }
 

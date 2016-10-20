@@ -1,6 +1,6 @@
 {
   "name": "nativescript-mip-ble",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "NativeScript plugin that allows to control a Mip robot.",
   "main": "mip.js",
   "typings": "index.d.ts",
@@ -42,8 +42,8 @@
   "homepage": "https://github.com/sebawita/nativescript-mip-ble",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "tns-core-modules": "^2.2.0",
-    "tns-platform-declarations": "2.2.0",
+    "tns-core-modules": "^2.3.0",
+    "tns-platform-declarations": "2.3.0",
     "typescript": "^1.8.10"
   },
   "dependencies": {
