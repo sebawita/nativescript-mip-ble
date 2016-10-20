@@ -32,4 +32,10 @@ export function navigateToSound() {
     topmost().navigate(navigationEntry);
 }
 
+export function navigateToLights() {
+    navigationEntry.moduleName = "pages/lights/lights-page";
+    topmost().navigate(navigationEntry);
+}
+
+
 

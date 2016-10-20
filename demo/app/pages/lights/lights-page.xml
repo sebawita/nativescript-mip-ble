@@ -1,0 +1,29 @@
+<Page navigatingTo="navigatingTo"
+  xmlns:drawer="nativescript-telerik-ui/sidedrawer"
+  xmlns:dc="pages/drawer"
+  xmlns:dd="nativescript-drop-down" >
+  <Page.actionBar>
+    <ActionBar class="action-bar" title="Lights"></ActionBar>
+  </Page.actionBar>
+  <drawer:RadSideDrawer id="sideDrawer" drawerLocation="Left">
+    
+    <drawer:RadSideDrawer.drawerTransition>
+      <drawer:RevealTransition/>
+    </drawer:RadSideDrawer.drawerTransition>
+    
+      <drawer:RadSideDrawer.drawerContent>
+        <dc:drawer-content />
+      </drawer:RadSideDrawer.drawerContent>
+
+      <drawer:RadSideDrawer.mainContent>
+        <StackLayout>
+            <Button text="Change Color" tap="{{ changeColor }}" height="200" />
+
+            <Label text="Left"/>
+            <dd:DropDown items="{{ ledOptions }}" selectedIndex="{{ leftLED }}" class="dropdown" />
+            <Label text="Right"/>
+            <dd:DropDown items="{{ ledOptions }}" selectedIndex="{{ rightLED }}" class="dropdown" />
+        </StackLayout>
+      </drawer:RadSideDrawer.mainContent>s
+    </drawer:RadSideDrawer>
+</Page>
