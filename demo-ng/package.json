@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "2.0.0",
     "@angular/platform-server": "2.0.0",
     "@angular/router": "3.0.0",
-    "nativescript-accelerometer": "^0.3.2",
+    "nativescript-accelerometer": "^1.0.0",
     "nativescript-angular": "1.0.0",
     "nativescript-mip-ble": "file:..",
     "reflect-metadata": "^0.1.8",
