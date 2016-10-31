@@ -1,7 +1,11 @@
 # Develop a NativeScript plugin now (w/ TypeScript)
 
 ## Getting started
-
+If you want to contribute the plugin, you need to run 
+```
+tns install
+```
+ at the root first, which will let you then use the demo projects.
 
 ### To rebuild the plugin
 
