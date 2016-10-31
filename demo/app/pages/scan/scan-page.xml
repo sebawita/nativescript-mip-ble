@@ -22,7 +22,7 @@
           <Button dock="top" text="Scan" tap="{{ scan }}" />
 
           <lv:RadListView 
-                  items="{{ scanner.devicesAround }}"
+                  items="{{ devicesAround }}"
                   pullToRefresh="true" pullToRefreshInitiated="{{ scan }}"
                   itemTap="{{ connect }}">
             <lv:RadListView.listViewLayout>

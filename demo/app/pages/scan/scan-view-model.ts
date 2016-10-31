@@ -1,21 +1,26 @@
-import observable = require("data/observable");
+//import observable = require("data/observable");
+import { ObservableArray } from "data/observable-array";
 import frameModule = require("ui/frame");
-import {BluetoothScanner} from "nativescript-mip-ble/bluetooth.scanner";
-import {MipDevice} from "nativescript-mip-ble/mip-device";
+import { BluetoothScanner } from "nativescript-mip-ble/bluetooth.scanner";
+import { MipDevice } from "nativescript-mip-ble/mip-device";
 //import {MipDevice} from "../../services/mip-device";
 
-import {RadListView, ListViewEventData} from "nativescript-telerik-ui/listview";
-import {AllMips} from "../../all-mips";
+import { RadListView, ListViewEventData } from "nativescript-telerik-ui/listview";
+import { AllMips } from "../../all-mips";
 
-export class ScanViewModel extends observable.Observable {
+export class ScanViewModel {// extends observable.Observable {
 
     public scanner: BluetoothScanner;
+    public devicesAround: ObservableArray<MipDevice>;
 
     constructor() {
-        super();
+        //super();
 
         this.scanner = new BluetoothScanner();
         this.scanner.initialisePermissionsIfRequired();
+
+        this.devicesAround = new ObservableArray<MipDevice>();
+        this.devicesAround.push(new MipDevice("B4:99:4C:48:14:24", "Test", "who knows?"));
     }
 
 
@@ -24,19 +29,21 @@ export class ScanViewModel extends observable.Observable {
     }
 
     public connect(args) {
-        var mipDevice: MipDevice = this.scanner.devicesAround.getItem(args.itemIndex);
+        var mipDevice: MipDevice = this.devicesAround.getItem(args.itemIndex);
         mipDevice.connect(this.onDisconnected)
-        .then((UUID) => {
-            AllMips.addMipDevice(mipDevice);
-            alert("Device Connected");
-        })
+            .then((UUID) => {
+                AllMips.addMipDevice(mipDevice);
+                alert("Device Connected");
+            })
     }
 
     public scan(eventData: ListViewEventData) {
         var listView: RadListView = eventData.object;
-        
-        this.scanner.scan()
-        .then(
+
+        this.devicesAround.splice(0);
+
+        this.scanner.scan(this.onRobotFound)
+            .then(
             () => {
                 listView.notifyPullToRefreshFinished();
             },
@@ -44,6 +51,10 @@ export class ScanViewModel extends observable.Observable {
                 listView.notifyPullToRefreshFinished();
                 alert("error while scanning: " + err);
             });
+    }
+
+    private onRobotFound(mip: MipDevice) {
+        Scanner.devicesAround.push(mip);
     }
 
     private onDisconnected(mip: MipDevice) {
