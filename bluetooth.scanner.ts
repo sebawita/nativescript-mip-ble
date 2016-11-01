@@ -1,3 +1,4 @@
+declare var require: any;
 var bluetooth = require("nativescript-bluetooth");
 
 import { MipDevice } from "./mip-device";
@@ -19,6 +20,7 @@ export class BluetoothScanner {
                 }
                 // Should I check the advertisement to verify if this is a MipDevice
                 //peripheral.advertisement ???===??? "AgEGBQLw/7D/E/8ABQUAAAAAAAAAAAAAAAAAAAANCVdvd1dlZS1NaXB1cwUSCAAQAAIKAAIKAAAAAAAAAAA="
+                // Non Mip example: AgEGEQa6Vomm+r+ivQFGfW7XYqutBRYKGAcEBQlGbGV4Agr6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 
                 console.log("");
                 console.log("----New Device Found----");

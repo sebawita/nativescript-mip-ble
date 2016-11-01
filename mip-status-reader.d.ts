@@ -9,7 +9,7 @@ export declare class MipStatusReader {
      * @param instructionCode Instruction code from the list of codes. See codes.ts
      * @param params a collection of parameters required for the given function
      */
-    private executeInstructionFast(instructionCode, params?);
+    private executeInstructionFast(instructionCode, params);
     notify(): Promise<any>;
     private requestData(instructionCode);
     getGameMode(): Promise<GameMode>;

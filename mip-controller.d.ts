@@ -8,27 +8,27 @@ export declare class MipController {
      * @param instructionCode Instruction code from the list of codes. See codes.ts
      * @param params a collection of parameters required for the given function
      */
-    private executeInstruction(instructionCode, params?);
+    private executeInstruction(instructionCode, params);
     /**
      * Takes the instruction code and required parameters and issues a bluetooth command.
      * This version doesn't wait for the response, therefore is eqiuiped to handle more commands per second
      * @param instructionCode Instruction code from the list of codes. See codes.ts
      * @param params a collection of parameters required for the given function
      */
-    private executeInstructionFast(instructionCode, params?);
+    private executeInstructionFast(instructionCode, params);
     /**
      * Tells Mip to play a sound from the built in list
      * @param soundFileIndex Sound file index (1~106) or send 0xF7-0xFE for volume
      * @param delay Delay in intervals of 30ms (0~255)
      * @param repeat Repeat (0-255) defines how many times the sound should be repeated
      */
-    playOneSound(soundFileIndex: number, delay: number, repeat?: number): void;
+    playOneSound(soundFileIndex: number, delay: number, repeat: number): void;
     /**
      * Tells Mip to play a sequence of sounds from the built in list
      * @param soundInstructions Sound instructions - not more than 8 chained sounds
      * @param repeat (0-255) defines how many times the sequence should be repeated
      */
-    playSoundSequence(soundInstructions: Array<SoundInstruction>, repeat?: number): void;
+    playSoundSequence(soundInstructions: Array<SoundInstruction>, repeat: number): void;
     /**
      * Sets Mips volume
      * @param volume accepts values (0-7)

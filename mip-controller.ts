@@ -1,4 +1,6 @@
+declare var require: any;
 var bluetooth = require("nativescript-bluetooth");
+
 import {codes} from "./codes";
 
 import {SoundInstruction, Position, Direction, TurnDirection, GameMode, SoftwareVersion, Status, WeightStatus, ChestLedInfo, HeadLightState} from "./mip-types";
@@ -16,7 +18,7 @@ export class MipController  {
      * @param instructionCode Instruction code from the list of codes. See codes.ts
      * @param params a collection of parameters required for the given function
      */
-    private executeInstruction(instructionCode: string, params: Array<number> = []): Promise<any> {
+    private executeInstruction(instructionCode: string, params: Array<number>): Promise<any> {
         //Parse instruction parameters -> convert each value into a hex string and then concatenate them to a comma separated string
         var instructionParams = params.map(param => {
             return convertToHexString(param);
@@ -39,7 +41,7 @@ export class MipController  {
      * @param instructionCode Instruction code from the list of codes. See codes.ts
      * @param params a collection of parameters required for the given function
      */
-    private executeInstructionFast(instructionCode: string, params: Array<number> = []) {
+    private executeInstructionFast(instructionCode: string, params: Array<number>) {
         //Parse instruction parameters -> convert each value into a hex string and then concatenate them to a comma separated string
         var instructionParams = params.map(param => {
             return convertToHexString(param);
@@ -63,7 +65,7 @@ export class MipController  {
      * @param delay Delay in intervals of 30ms (0~255)
      * @param repeat Repeat (0-255) defines how many times the sound should be repeated
      */
-    playOneSound(soundFileIndex: number, delay: number, repeat: number = 0) {
+    playOneSound(soundFileIndex: number, delay: number, repeat: number) {
         var soundInstruction = new SoundInstruction(soundFileIndex, delay);
         this.playSoundSequence([soundInstruction], repeat);
     }
@@ -73,7 +75,7 @@ export class MipController  {
      * @param soundInstructions Sound instructions - not more than 8 chained sounds
      * @param repeat (0-255) defines how many times the sequence should be repeated
      */
-    playSoundSequence(soundInstructions: Array<SoundInstruction>, repeat: number = 1) {
+    playSoundSequence(soundInstructions: Array<SoundInstruction>, repeat: number) {
         //The instructions should be constructed so that soundFileIndex and Delay are provided in pairs, and the last param is repeat.
         //The shouldn't be more than 8 sounds provided.
         //i.e. [index1, delay1, index2, delay2... index8, delay8, repeat]
@@ -138,6 +140,11 @@ export class MipController  {
         this.executeInstructionFast(codes.DistanceDrive, [direction, distance, turnDirection, angleByte1, angleByte2]);
     }
 
+    /**
+     * Tells Mip to drive forward for a specified time
+     * @param speed (0-30)
+     * @param time in 7ms intervals (0~255) -> Time = Value * 7ms
+     */
     driveForwardWithTime(speed: number, time: number) {
         speed = ensureBoundaries(speed, 0, 30);
         time = ensureBoundaries(time, 0, 255);
@@ -214,7 +221,7 @@ export class MipController  {
      * 
      */
     stop() {
-        this.executeInstructionFast(codes.Stop);
+        this.executeInstructionFast(codes.Stop, []);
     }
 
     /**
@@ -269,7 +276,7 @@ export class MipController  {
      * Resets the info on total distance travelled in the current power cycle
      */
     resetOdometer() {
-        this.executeInstructionFast(codes.ResetOdometer);
+        this.executeInstructionFast(codes.ResetOdometer, []);
     }
 
     /**

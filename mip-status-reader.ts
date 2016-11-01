@@ -1,3 +1,4 @@
+declare var require: any;
 var bluetooth = require("nativescript-bluetooth");
 import {codes} from "./codes";
 
@@ -21,7 +22,7 @@ export class MipStatusReader  {
      * @param instructionCode Instruction code from the list of codes. See codes.ts
      * @param params a collection of parameters required for the given function
      */
-    private executeInstructionFast(instructionCode: string, params: Array<number> = []) {
+    private executeInstructionFast(instructionCode: string, params: Array<number>) {
         //Parse instruction parameters -> convert each value into a hex string and then concatenate them to a comma separated string
         var instructionParams = params.map(param => {
             return convertToHexString(param);
@@ -76,7 +77,7 @@ export class MipStatusReader  {
         return new Promise<any>((resolve) => {
             this.listeners[parseInt(instructionCode)] = resolve;
 
-            this.executeInstructionFast(instructionCode);
+            this.executeInstructionFast(instructionCode, []);
         });
     }
 
