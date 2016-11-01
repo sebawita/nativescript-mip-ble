@@ -1,10 +1,6 @@
-import { Observable } from "data/observable";
-import { ObservableArray } from "data/observable-array";
-import { MipDevice } from "./mip-device";
-export declare class BluetoothScanner extends Observable {
-    devicesAround: ObservableArray<MipDevice>;
+export declare class BluetoothScanner {
     constructor();
-    scan(): Promise<any>;
+    scan(deviceFound: (MipDevice) => any): Promise<any>;
     initialisePermissionsIfRequired(): void;
     hasPermissions(): Promise<boolean>;
     requestPermissions(): void;

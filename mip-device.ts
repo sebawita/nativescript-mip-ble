@@ -1,12 +1,11 @@
-import { Observable } from "data/observable";
+declare var require: any;
 var bluetooth = require("nativescript-bluetooth");
 
-import { codes } from "./codes";
 import { HeadLightState } from "./mip-types";
 import { MipController } from "./mip-controller";
 import { MipStatusReader } from "./mip-status-reader";
 
-export class MipDevice extends Observable {
+export class MipDevice {
     public UUID: string;
     public name: string;
     public state: string;
@@ -16,12 +15,15 @@ export class MipDevice extends Observable {
 
 
     constructor(UUID, name, state) {
-        super();
         this.UUID = UUID;
         this.name = name;
         this.state = state;
     }
 
+    /**
+     * Connects to the given MipDevice
+     * @param disconnectFn callback function for when mip gets disconnected
+     */
     public connect(disconnectFn: (MipDevice) => any): Promise<any> {
         return new Promise((resolve, reject) => {
             bluetooth.connect({
@@ -45,21 +47,26 @@ export class MipDevice extends Observable {
         })
     }
 
+    /**
+     * Disconnects from the MipDevice
+     */
     public disconnect(): Promise<any> {
-        return bluetooth.disconnect(this.UUID);
+        return bluetooth.disconnect(this);
     }
 
-    //speed     [-1]-[0] Back speed / [0]-[1] Forward
-    //turnspeed [-1]-[0] Left : [0]-[1] Right
-    //goCrazy [true] - make the robot move in the crazy fast mode, [false] - normal speed 
-    public drive(speed: number, turnSpeed: number, goCrazy: boolean = false): void {
+    /**
+     * Issues a command to the robot to move for 50ms in given direction
+     * @param speed [-1]-[0] Back speed / [0]-[1] Forward
+     * @param turnspeed [-1]-[0] Left : [0]-[1] Right
+     * @param goCrazy [true] - make the robot move in the crazy fast mode, [false] - normal speed 
+     */
+    public drive(speed: number, turnSpeed: number, goCrazy: boolean): void {
         speed = this.convertSpeed(speed, goCrazy);
         turnSpeed = this.convertTurnSpeed(turnSpeed, goCrazy);
 
         if (goCrazy) {
             speed = (speed > 0) ? speed + 0x80 : speed;
             turnSpeed = (turnSpeed > 0) ? turnSpeed + 0x80 : turnSpeed;
-
         }
 
         this.mipController.continousDrive(speed, turnSpeed);
@@ -148,13 +155,11 @@ export class MipDevice extends Observable {
         var repeat = 5;
 
         var loop = setInterval(() => {
-            //this.executeInstruction(codes.ContinousDrive, [speed, turn]);
             this.mipController.continousDrive(speed, turn);
 
             if (repeat-- < 0)
                 clearInterval(loop);
         }, 50);
-
     }
 
     moveForward(speed) {
