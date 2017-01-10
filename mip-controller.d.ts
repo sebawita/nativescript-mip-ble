@@ -48,6 +48,11 @@ export declare class MipController {
      * @param angle accepts values (0-360)
      */
     distanceDrive(direction: Direction, distance: number, turnDirection: TurnDirection, angle: number): void;
+    /**
+     * Tells Mip to drive forward for a specified time
+     * @param speed (0-30)
+     * @param time in 7ms intervals (0~255) -> Time = Value * 7ms
+     */
     driveForwardWithTime(speed: number, time: number): void;
     /**
      * Tells Mip to drive backward for a specified time

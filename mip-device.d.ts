@@ -8,8 +8,21 @@ export declare class MipDevice {
     mipController: MipController;
     mipStatusReader: MipStatusReader;
     constructor(UUID: any, name: any, state: any);
+    /**
+     * Connects to the given MipDevice
+     * @param disconnectFn callback function for when mip gets disconnected
+     */
     connect(disconnectFn: (MipDevice) => any): Promise<any>;
+    /**
+     * Disconnects from the MipDevice
+     */
     disconnect(): Promise<any>;
+    /**
+     * Issues a command to the robot to move for 50ms in given direction
+     * @param speed [-1]-[0] Back speed / [0]-[1] Forward
+     * @param turnspeed [-1]-[0] Left : [0]-[1] Right
+     * @param goCrazy [true] - make the robot move in the crazy fast mode, [false] - normal speed
+     */
     drive(speed: number, turnSpeed: number, goCrazy: boolean): void;
     private convertSpeed(speed, crazySpeed);
     private convertTurnSpeed(turnSpeed, crazySpeed);
