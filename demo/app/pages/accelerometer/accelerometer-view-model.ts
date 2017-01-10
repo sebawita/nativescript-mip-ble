@@ -50,4 +50,4 @@ export class AccelerometerViewModel extends Observable {
     }
 }
 
-export var Accelerometer = new AccelerometerViewModel();
+export var accelerometerViewModel = new AccelerometerViewModel();

@@ -54,7 +54,7 @@ export class ScanViewModel {// extends observable.Observable {
     }
 
     private onRobotFound(mip: MipDevice) {
-        Scanner.devicesAround.push(mip);
+        scanViewModel.devicesAround.push(mip);
     }
 
     private onDisconnected(mip: MipDevice) {
@@ -62,4 +62,4 @@ export class ScanViewModel {// extends observable.Observable {
     }
 }
 
-export var Scanner = new ScanViewModel();
+export var scanViewModel = new ScanViewModel();

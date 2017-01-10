@@ -47,4 +47,4 @@ export class JoyStickViewModel extends Observable {
 
 }
 
-export var JoyStick = new JoyStickViewModel();
+export var joyStickViewModel = new JoyStickViewModel();
