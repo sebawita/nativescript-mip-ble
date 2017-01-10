@@ -79,3 +79,5 @@ export class SoundViewModel extends Observable {
         AllMips.playOneSound(Sound.BOXING_PUNCHCONNECT_3);
     }
 }
+
+export var soundViewModel = new SoundViewModel();

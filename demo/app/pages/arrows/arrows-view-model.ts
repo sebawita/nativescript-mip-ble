@@ -34,3 +34,5 @@ export class ArrowsViewModel extends Observable {
         AllMips.turnRight(this.speed, this.turnSpeed);
     }
 }
+
+export var arrowsViewModel = new ArrowsViewModel();

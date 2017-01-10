@@ -54,3 +54,5 @@ export class LightsViewModel extends Observable {
         AllMips.setHeadLED(this.rightLED, this.rightLED, this.leftLED, this.leftLED);
     }
 }
+
+export var lightsViewModel = new LightsViewModel();
