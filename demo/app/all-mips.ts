@@ -24,7 +24,7 @@ export class AllMipsModel extends Observable {
 
     public drive(speed: number, turnSpeed: number) {
         this.mips.forEach( (mip) => {
-            mip.drive(speed, turnSpeed);
+            mip.drive(speed, turnSpeed, false);
         })
     }
 
