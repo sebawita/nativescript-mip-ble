@@ -58,7 +58,7 @@ export class AllMipsModel extends Observable {
         })
     }
 
-    public playOneSound(soundIndex: number, soundDelay: number, soundRepeat: number) {
+    public playOneSound(soundIndex: number, soundDelay: number = 0, soundRepeat: number = 0) {
         this.mips.forEach( (mip) => {
             mip.mipController.playOneSound(soundIndex, soundDelay, soundRepeat);
         })
