@@ -1,13 +1,13 @@
 {
   "name": "nativescript-mip-ble",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "NativeScript plugin that allows to control a Mip robot.",
   "main": "mip.js",
   "typings": "index.d.ts",
   "nativescript": {
     "platforms": {
-      "android": "2.3.0",
-      "ios": "2.3.0"
+      "android": "2.4.1",
+      "ios": "2.4.0"
     }
   },
   "scripts": {
@@ -42,11 +42,11 @@
   "homepage": "https://github.com/sebawita/nativescript-mip-ble",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "tns-core-modules": "^2.3.0",
-    "tns-platform-declarations": "2.3.0",
-    "typescript": "^1.8.10"
+    "tns-core-modules": "^2.4.4",
+    "tns-platform-declarations": "2.4.4",
+    "typescript": "^2.0.10"
   },
   "dependencies": {
-    "nativescript-bluetooth": "^1.1.2"
+    "nativescript-bluetooth": "^1.1.4"
   }
 }
