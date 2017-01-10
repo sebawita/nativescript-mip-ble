@@ -38,14 +38,15 @@ export class BluetoothScanner {
 
         /* check if a WowWee device
            Wowwee has a code 0x03FO, they are listed as CLINK at https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers
-           the code should be stored as advert[4] => FO and advert[5] => 03
+           the code should be stored as advert[4] => O3 and advert[5] => F0
         */
-        if (advert[4] !== 0xF0 || advert[5] !== 0x03) {
-            // this is not a Wowwee device
-            return false;
-        }
+        // if (advert[4] !== 0x03 || advert[5] !== 0xF0) {
+        //     // this is not a Wowwee device
+        //     // return false;
+        //     console.log("Is this a WowWee device?: " + advert.toString());
+        // }
 
-        // check if MiP, all MiPs have the 4th digit set to 3
+        // check if MiP, all MiPs have the 4th digit set to 5
         return (advert.length > 3 && advert[3] === 5);
     }
 
