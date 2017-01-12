@@ -1,0 +1,20 @@
+<ActionBar android:opacity="1" title="{{title}}" class="action-bar">
+  <android>
+    <NavigationButton icon="res://ic_menu_main" tap="showSlideout" />
+  </android>
+  <ActionBar.actionItems>
+    <iOS>
+      <ActionItem id="actionbar-menu" ios.position="left" tap="showSlideout" >
+        <ActionItem.actionView>
+          <Image src="res://ic_menu_main" width="22" height="22" margin="0, 8, 0, -8" />
+        </ActionItem.actionView>
+      </ActionItem>
+    </iOS>
+  </ActionBar.actionItems>
+
+  <!--<ActionBar.titleView>
+    <GridLayout>
+      <Image id="actionbar-logo" src="res://icon" stretch="none" horizontalAlignment="center" android:margin="0 60 0 0" />
+    </GridLayout>
+  </ActionBar.titleView>-->
+</ActionBar>

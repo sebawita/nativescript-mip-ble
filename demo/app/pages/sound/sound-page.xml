@@ -1,64 +1,59 @@
-<Page navigatingTo="navigatingTo"
+<page:DrawerPage navigatingTo="navigatingTo"
+  xmlns:lv="nativescript-telerik-ui/listview"
+  xmlns:page="nativescript-telerik-ui/sidedrawer/drawerpage"
   xmlns:drawer="nativescript-telerik-ui/sidedrawer"
-  xmlns:dc="pages/drawer">
-  <Page.actionBar>
-    <ActionBar class="action-bar" title="Sound"></ActionBar>
-  </Page.actionBar>
+  xmlns:dc="pages/drawer"
+  xmlns:ab="pages/action-bar">
 
-  <drawer:RadSideDrawer id="sideDrawer" drawerLocation="Left">
-    
-    <drawer:RadSideDrawer.drawerTransition>
-      <drawer:RevealTransition/>
-    </drawer:RadSideDrawer.drawerTransition>
-    
+  <page:DrawerPage.actionBar>
+    <ab:action-bar-template />
+  </page:DrawerPage.actionBar>
+
+  <page:DrawerPage.sideDrawer>
+    <drawer:RadSideDrawer id="side-drawer" drawerSize="260">
       <drawer:RadSideDrawer.drawerContent>
         <dc:drawer-content />
       </drawer:RadSideDrawer.drawerContent>
-
-      <drawer:RadSideDrawer.mainContent>
-        <StackLayout>    
-          <Label text="{{ 'Volume: ' + volume }}" />
-          <Slider minValue="0" maxValue="7" value="{{ volume }}" />
-
-          <Label text="{{ 'Sound Index: ' + soundIndex }}" />
-          <Slider minValue="1" maxValue="106" value="{{ soundIndex }}" />
-
-          <Label text="{{ 'Sound Delay: ' + soundDelay }}" />
-          <Slider minValue="10" maxValue="255" value="{{ soundDelay }}" />
-
-          <Label text="{{ 'Sound Repeat: ' + soundRepeat }}" />
-          <Slider minValue="0" maxValue="10" value="{{ soundRepeat }}" />
-
-          <Button row="0" col="0" text="Play sound" tap="{{ playSound }}" />
-          <Button row="0" col="1" text="Mute" tap="{{ mute }}" />
-          <Button row="0" col="2" text="Max Volume" tap="{{ setMaxVolume }}" />
-
-          <GridLayout rows="*, *, *, *, *" columns="*, *, *">
-            <Button row="0" col="0" text="Hello" tap="{{ playSoundHello }}" />
-            <Button row="0" col="1" text="Talk" tap="{{ playSoundConversation }}" />
-            <Button row="0" col="2" text="Bye" tap="{{ playSoundBye }}" />
-
-            <Button row="1" col="0" text="Sing" tap="{{ playSoundSing }}" />
-            <Button row="1" col="1" text="Song 1" tap="{{ playSoundSong1 }}" />
-            <Button row="1" col="2" text="Song 2" tap="{{ playSoundSong2 }}" />
-
-            <Button row="2" col="0" text="Drink" tap="{{ playSoundDrink }}" />
-            <Button row="2" col="1" text="Eat" tap="{{ playSoundEat }}" />
-            <Button row="2" col="2" text="Burp" tap="{{ playSoundBurp }}" />
-
-            <Button row="3" col="0" text="Sad" tap="{{ playSoundSad }}" />
-            <Button row="3" col="1" text="Happy" tap="{{ playSoundHappy }}" />
-            <Button row="3" col="2" text="Excited" tap="{{ playSoundExcited }}" />
-            
-            <Button row="4" col="0" text="Punch 1" tap="{{ playSoundPunch1 }}" />
-            <Button row="4" col="1" text="Punch 2" tap="{{ playSoundPunch2 }}" />
-            <Button row="4" col="2" text="Punch 3" tap="{{ playSoundPunch3 }}" />
-          </GridLayout>
-
-
-
-          
-        </StackLayout>
-      </drawer:RadSideDrawer.mainContent>
     </drawer:RadSideDrawer>
-</Page>
+  </page:DrawerPage.sideDrawer>
+
+  <StackLayout>    
+    <Label text="{{ 'Volume: ' + volume }}" />
+    <Slider minValue="0" maxValue="7" value="{{ volume }}" />
+
+    <Label text="{{ 'Sound Index: ' + soundIndex + ' - ' + soundName }}" />
+    <Slider minValue="1" maxValue="106" value="{{ soundIndex }}" />
+
+    <!--<Label text="{{ 'Sound Delay: ' + soundDelay }}" />
+    <Slider minValue="10" maxValue="255" value="{{ soundDelay }}" />
+
+    <Label text="{{ 'Sound Repeat: ' + soundRepeat }}" />
+    <Slider minValue="0" maxValue="10" value="{{ soundRepeat }}" />-->
+
+    <Button row="0" col="0" text="Play sound" tap="{{ playSound }}" />
+    <Button row="0" col="1" text="Mute" tap="{{ mute }}" />
+    <Button row="0" col="2" text="Max Volume" tap="{{ setMaxVolume }}" />
+
+    <GridLayout rows="*, *, *, *, *" columns="*, *, *">
+      <Button row="0" col="0" text="Hello" tap="{{ playSoundHello }}" />
+      <Button row="0" col="1" text="Talk" tap="{{ playSoundConversation }}" />
+      <Button row="0" col="2" text="Bye" tap="{{ playSoundBye }}" />
+
+      <Button row="1" col="0" text="Sing" tap="{{ playSoundSing }}" />
+      <Button row="1" col="1" text="Song 1" tap="{{ playSoundSong1 }}" />
+      <Button row="1" col="2" text="Song 2" tap="{{ playSoundSong2 }}" />
+
+      <Button row="2" col="0" text="Drink" tap="{{ playSoundDrink }}" />
+      <Button row="2" col="1" text="Eat" tap="{{ playSoundEat }}" />
+      <Button row="2" col="2" text="Burp" tap="{{ playSoundBurp }}" />
+
+      <Button row="3" col="0" text="Sad" tap="{{ playSoundSad }}" />
+      <Button row="3" col="1" text="Happy" tap="{{ playSoundHappy }}" />
+      <Button row="3" col="2" text="Excited" tap="{{ playSoundExcited }}" />
+      
+      <Button row="4" col="0" text="Punch 1" tap="{{ playSoundPunch1 }}" />
+      <Button row="4" col="1" text="Punch 2" tap="{{ playSoundPunch2 }}" />
+      <Button row="4" col="2" text="Punch 3" tap="{{ playSoundPunch3 }}" />
+    </GridLayout>
+  </StackLayout>
+</page:DrawerPage>

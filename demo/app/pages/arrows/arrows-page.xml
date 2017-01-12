@@ -1,37 +1,35 @@
-<Page navigatingTo="navigatingTo"
+<page:DrawerPage navigatingTo="navigatingTo"
+  xmlns:page="nativescript-telerik-ui/sidedrawer/drawerpage"
   xmlns:drawer="nativescript-telerik-ui/sidedrawer"
-  xmlns:dc="pages/drawer">
-  <Page.actionBar>
-    <ActionBar class="action-bar" title="Arrows"></ActionBar>
-  </Page.actionBar>
-  <drawer:RadSideDrawer id="sideDrawer" drawerLocation="Left">
-    
-    <drawer:RadSideDrawer.drawerTransition>
-      <drawer:RevealTransition/>
-    </drawer:RadSideDrawer.drawerTransition>
-    
-      <drawer:RadSideDrawer.drawerContent>
-        <dc:drawer-content />
-      </drawer:RadSideDrawer.drawerContent>
+  xmlns:dc="pages/drawer"
+  xmlns:ab="pages/action-bar">
 
-      <drawer:RadSideDrawer.mainContent>
-        <StackLayout>
+  <page:DrawerPage.actionBar>
+    <ab:action-bar-template />
+  </page:DrawerPage.actionBar>
 
-          <Label text="{{ 'Speed:' + speed}}" textWrap="true" />
-          <Slider minValue="0" maxValue="0x20" value="{{ speed }}" />
+  <page:DrawerPage.sideDrawer>
+      <drawer:RadSideDrawer id="side-drawer" drawerSize="260">
+          <drawer:RadSideDrawer.drawerContent>
+              <dc:drawer-content />
+          </drawer:RadSideDrawer.drawerContent>
+      </drawer:RadSideDrawer>
+  </page:DrawerPage.sideDrawer>
 
-          <Label text="{{ 'Turn Speed:' + turnSpeed}}" textWrap="true" />
-          <Slider minValue="0" maxValue="0x20" value="{{ turnSpeed }}" />
+  <StackLayout>
+    <Label text="{{ 'Speed:' + speed}}" textWrap="true" />
+    <Slider minValue="0" maxValue="0x20" value="{{ speed }}" />
 
-          <Button text="Forward" tap="{{ moveForward }}" height="10%" />
+    <Label text="{{ 'Turn Speed:' + turnSpeed}}" textWrap="true" />
+    <Slider minValue="0" maxValue="0x20" value="{{ turnSpeed }}" />
 
-          <DockLayout orientation="horizontal" height="10%" width="100%">
-            <Button dock="left" text="Left" tap="{{ turnLeft }}" width="49%"  />
-            <Button text="Right" tap="{{ turnRight }}" />
-          </DockLayout>
+    <Button text="Forward" tap="{{ moveForward }}" height="10%" />
 
-          <Button text="Back" tap="{{ moveBack }}" height="10%" />
-        </StackLayout>
-      </drawer:RadSideDrawer.mainContent>
-    </drawer:RadSideDrawer>
-</Page>
+    <DockLayout orientation="horizontal" height="10%" width="100%">
+      <Button dock="left" text="Left" tap="{{ turnLeft }}" width="49%"  />
+      <Button text="Right" tap="{{ turnRight }}" />
+    </DockLayout>
+
+    <Button text="Back" tap="{{ moveBack }}" height="10%" />
+  </StackLayout>
+</page:DrawerPage>

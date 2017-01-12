@@ -1,29 +1,29 @@
-<Page navigatingTo="navigatingTo"
+<page:DrawerPage navigatingTo="navigatingTo"
+  xmlns:page="nativescript-telerik-ui/sidedrawer/drawerpage"
   xmlns:drawer="nativescript-telerik-ui/sidedrawer"
   xmlns:dc="pages/drawer"
-  xmlns:dd="nativescript-drop-down" >
-  <Page.actionBar>
-    <ActionBar class="action-bar" title="Lights"></ActionBar>
-  </Page.actionBar>
-  <drawer:RadSideDrawer id="sideDrawer" drawerLocation="Left">
-    
-    <drawer:RadSideDrawer.drawerTransition>
-      <drawer:RevealTransition/>
-    </drawer:RadSideDrawer.drawerTransition>
-    
+  xmlns:ab="pages/action-bar"
+  xmlns:dd="nativescript-drop-down">
+
+  <page:DrawerPage.actionBar>
+    <ab:action-bar-template />
+  </page:DrawerPage.actionBar>
+
+  <page:DrawerPage.sideDrawer>
+    <drawer:RadSideDrawer id="side-drawer" drawerSize="260">
       <drawer:RadSideDrawer.drawerContent>
         <dc:drawer-content />
       </drawer:RadSideDrawer.drawerContent>
-
-      <drawer:RadSideDrawer.mainContent>
-        <StackLayout>
-            <Button text="Change Color" tap="{{ changeColor }}" height="200" />
-
-            <Label text="Left"/>
-            <dd:DropDown items="{{ ledOptions }}" selectedIndex="{{ leftLED }}" class="dropdown" />
-            <Label text="Right"/>
-            <dd:DropDown items="{{ ledOptions }}" selectedIndex="{{ rightLED }}" class="dropdown" />
-        </StackLayout>
-      </drawer:RadSideDrawer.mainContent>s
     </drawer:RadSideDrawer>
-</Page>
+  </page:DrawerPage.sideDrawer>
+
+  <StackLayout>
+    <Button text="Change Color" tap="{{ changeColor }}" height="200" />
+    <Android>
+      <Label text="Left"/>
+      <dd:DropDown items="{{ ledOptions }}" selectedIndex="{{ leftLED }}" class="dropdown" />
+      <Label text="Right"/>
+      <dd:DropDown items="{{ ledOptions }}" selectedIndex="{{ rightLED }}" class="dropdown" />
+    </Android>
+  </StackLayout>
+</page:DrawerPage>

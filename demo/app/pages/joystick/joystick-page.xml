@@ -1,42 +1,43 @@
-<Page navigatingTo="navigatingTo"
+<page:DrawerPage navigatingTo="navigatingTo"
+  xmlns:page="nativescript-telerik-ui/sidedrawer/drawerpage"
   xmlns:drawer="nativescript-telerik-ui/sidedrawer"
-  xmlns:dc="pages/drawer">
-  <Page.actionBar>
-    <ActionBar class="action-bar" title="JoyStick"></ActionBar>
-  </Page.actionBar>
+  xmlns:dc="pages/drawer"
+  xmlns:ab="pages/action-bar">
 
-  <drawer:RadSideDrawer id="sideDrawer" drawerLocation="Left">
-    
-    <drawer:RadSideDrawer.drawerTransition>
-      <drawer:RevealTransition/>
-    </drawer:RadSideDrawer.drawerTransition>
-    
+  <page:DrawerPage.actionBar>
+    <ab:action-bar-template />
+  </page:DrawerPage.actionBar>
+
+  <page:DrawerPage.sideDrawer>
+    <drawer:RadSideDrawer id="side-drawer" drawerSize="260">
       <drawer:RadSideDrawer.drawerContent>
         <dc:drawer-content />
       </drawer:RadSideDrawer.drawerContent>
-
-      <drawer:RadSideDrawer.mainContent>
-        <StackLayout xmlns:js="nativescript-joystick">
-          <Button text="Start" tap="{{ startJoystick }}" />
-          <Button text="Stop" tap="{{ stopJoystick }}" />
-
-          <StackLayout orientation="horizontal" >
-            <js:JoyStick
-              padColor="black"
-              buttonColor="white"
-              width="50%"
-              vertical="{{speed}}">
-            </js:JoyStick>
-            <js:JoyStick
-              padColor="blue"
-              buttonColor="red"
-              width="50%"
-              horizontal="{{turnSpeed}}">
-            </js:JoyStick>
-          </StackLayout>
-          
-        </StackLayout>
-        
-      </drawer:RadSideDrawer.mainContent>
     </drawer:RadSideDrawer>
-</Page>
+  </page:DrawerPage.sideDrawer>
+
+  <StackLayout>
+      <Label text="JoyStick will be here soon" textWrap="true" />
+  </StackLayout>
+
+
+  <!--<StackLayout xmlns:js="nativescript-joystick">
+    <Button text="Start" tap="{{ startJoystick }}" />
+    <Button text="Stop" tap="{{ stopJoystick }}" />
+
+    <StackLayout orientation="horizontal" >
+      <js:JoyStick
+        padColor="black"
+        buttonColor="white"
+        width="50%"
+        vertical="{{speed}}">
+      </js:JoyStick>
+      <js:JoyStick
+        padColor="blue"
+        buttonColor="red"
+        width="50%"
+        horizontal="{{turnSpeed}}">
+      </js:JoyStick>
+    </StackLayout>
+  </StackLayout>-->
+</page:DrawerPage>

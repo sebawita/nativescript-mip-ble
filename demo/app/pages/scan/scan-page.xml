@@ -1,45 +1,42 @@
-<Page navigatingTo="navigatingTo"
+<page:DrawerPage navigatingTo="navigatingTo"
   xmlns:lv="nativescript-telerik-ui/listview"
+  xmlns:page="nativescript-telerik-ui/sidedrawer/drawerpage"
   xmlns:drawer="nativescript-telerik-ui/sidedrawer"
-  xmlns:dc="pages/drawer">
-  <Page.actionBar>
-    <ActionBar class="action-bar" title="Scanner"></ActionBar>
-  </Page.actionBar>
+  xmlns:dc="pages/drawer"
+  xmlns:ab="pages/action-bar">
 
-  <drawer:RadSideDrawer id="sideDrawer" drawerLocation="Left">
-    
-    <drawer:RadSideDrawer.drawerTransition>
-      <drawer:RevealTransition/>
-    </drawer:RadSideDrawer.drawerTransition>
-    
+  <page:DrawerPage.actionBar>
+    <ab:action-bar-template />
+  </page:DrawerPage.actionBar>
+
+  <page:DrawerPage.sideDrawer>
+    <drawer:RadSideDrawer id="side-drawer" drawerSize="260">
       <drawer:RadSideDrawer.drawerContent>
         <dc:drawer-content />
       </drawer:RadSideDrawer.drawerContent>
-
-      <drawer:RadSideDrawer.mainContent>
-        <DockLayout >
-          <Button dock="top" text="GetPermissions" tap="{{ getPermissions }}" />
-          <Button dock="top" text="Scan" tap="{{ scan }}" />
-
-          <lv:RadListView 
-                  items="{{ devicesAround }}"
-                  pullToRefresh="true" pullToRefreshInitiated="{{ scan }}"
-                  itemTap="{{ connect }}">
-            <lv:RadListView.listViewLayout>
-                  <lv:ListViewLinearLayout scrollDirection="Vertical"/>
-              </lv:RadListView.listViewLayout>
-              <lv:RadListView.itemTemplate>
-                <StackLayout orientation="vertical" padding="5 10 5 10"  style="background-color: #7fff7f;">
-                  <Label text="{{ 'UUID:' + UUID }}" />
-                  <Label text="{{ 'name:' + name }}" />
-                  <Label text="{{ 'state:' + state }}" />
-                </StackLayout>
-            </lv:RadListView.itemTemplate>
-          </lv:RadListView>
-        </DockLayout>
-      </drawer:RadSideDrawer.mainContent>
     </drawer:RadSideDrawer>
+  </page:DrawerPage.sideDrawer>
 
 
+  <DockLayout>
+    <Button dock="top" text="GetPermissions" tap="{{ getPermissions }}" />
+    <Button dock="top" text="Scan" tap="{{ scan }}" />
 
-</Page>
+    <lv:RadListView 
+        items="{{ devicesAround }}"
+        pullToRefresh="true" pullToRefreshInitiated="{{ scan }}"
+        itemTap="{{ connect }}">
+      <lv:RadListView.listViewLayout>
+        <lv:ListViewLinearLayout scrollDirection="Vertical"/>
+      </lv:RadListView.listViewLayout>
+      <lv:RadListView.itemTemplate>
+        <StackLayout orientation="vertical" padding="5 10 5 10"  style="background-color: #7fff7f;">
+          <Label text="{{ 'UUID:' + UUID }}" />
+          <Label text="{{ 'name:' + name }}" />
+          <Label text="{{ 'state:' + state }}" />
+        </StackLayout>
+      </lv:RadListView.itemTemplate>
+    </lv:RadListView>
+  </DockLayout>
+
+</page:DrawerPage>
