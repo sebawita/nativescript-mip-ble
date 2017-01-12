@@ -8,6 +8,7 @@ import { Color } from "color";
 import {HeadLightState} from "nativescript-mip-ble/mip-types";
 
 export class LightsViewModel extends Observable {
+    public title = "Lights";
 
     private picker = new ColorPicker();
     private selectedColor: Color = new Color("Gray");

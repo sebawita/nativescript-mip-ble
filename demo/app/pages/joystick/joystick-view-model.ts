@@ -3,6 +3,8 @@ import { Observable } from "data/observable";
 import { AllMips } from "../../all-mips";
 
 export class JoyStickViewModel extends Observable {
+    public title = "JoyStick";
+
     private turnSpeed: number = 0;
     private speed: number = 0;
 

@@ -2,6 +2,8 @@ import {Observable} from "data/observable";
 import {AllMips} from "../../all-mips";
 
 export class ArrowsViewModel extends Observable {
+    public title = "Arrows";
+
     private _speed: number = 24;
     get speed() {
         return this._speed;

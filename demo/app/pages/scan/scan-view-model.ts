@@ -9,6 +9,7 @@ import { RadListView, ListViewEventData } from "nativescript-telerik-ui/listview
 import { AllMips } from "../../all-mips";
 
 export class ScanViewModel {// extends observable.Observable {
+    public title = "Scanner";
 
     public scanner: BluetoothScanner;
     public devicesAround: ObservableArray<MipDevice>;
