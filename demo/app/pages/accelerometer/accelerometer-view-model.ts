@@ -4,6 +4,8 @@ import { startAccelerometerUpdates, stopAccelerometerUpdates } from "nativescrip
 import { AllMips } from "../../all-mips";
 
 export class AccelerometerViewModel extends Observable {
+    public title = "Accelerometer";
+
     private turnSpeed: number = 0;
     private speed: number = 0;
     private gear = 1.5;
