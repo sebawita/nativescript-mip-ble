@@ -3,22 +3,37 @@ import {AllMips} from "../../all-mips";
 import {Sound} from "nativescript-mip-ble/mip-types";
 
 export class SoundViewModel extends Observable {
+    public title = "Sound";
+
     private _volume = 3;
     public get volume(): number {
         return this._volume;
     }
     public set volume(val: number) {
+        val = Math.round(val);
         this._volume = val;
 
         AllMips.setVolume(val);
     }
 
-    public soundIndex: number = 1;
-    public soundDelay: number = 10;
-    public soundRepeat: number = 0;
+    private _soundIndex: number = 1;
+    public get soundIndex(): number {
+        return this._soundIndex;
+    }
+    public set soundIndex(val: number) {
+        this._soundIndex = Math.round(val);
+    }
+
+    public get soundName(): string {
+        return Sound[this.get("soundIndex")];
+    }
+
+    // public soundDelay: number = 10;
+    // public soundRepeat: number = 0;
 
     playSound() {
-        AllMips.playOneSound(this.soundIndex, this.soundDelay, this.soundRepeat);
+        // AllMips.playOneSound(this.soundIndex, this.soundDelay, this.soundRepeat);
+        AllMips.playOneSound(this.soundIndex);
     }
 
     mute() {
