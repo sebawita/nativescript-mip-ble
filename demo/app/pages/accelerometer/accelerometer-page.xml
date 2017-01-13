@@ -12,9 +12,9 @@
     <d:drawer-template />
   </page:DrawerPage.sideDrawer>
 
-  <StackLayout>
-    <Button text="Start" tap="{{ startAccelerometer }}" />
-    <Button text="Stop" tap="{{ stopAccelerometer }}" />
+  <StackLayout class="m-t-5">
+    <Button text="Start" tap="{{ startAccelerometer }}" class="btn btn-primary" />
+    <Button text="Stop" tap="{{ stopAccelerometer }}" class="btn btn-primary" />
     <!--<Button text="Switch Gear" tap="{{ switchGear }}" />-->
   </StackLayout>
 </page:DrawerPage>

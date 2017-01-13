@@ -12,43 +12,41 @@
     <d:drawer-template />
   </page:DrawerPage.sideDrawer>
 
-  <StackLayout>    
-    <Label text="{{ 'Volume: ' + volume }}" />
-    <Slider minValue="0" maxValue="7" value="{{ volume }}" />
+  <StackLayout class="m-t-5">    
+    <Label text="{{ 'Volume: ' + volume }}" class="text-center" />
+    <Slider minValue="0" maxValue="7" value="{{ volume }}" class="slider" />
 
-    <Label text="{{ 'Sound Index: ' + soundIndex + ' - ' + soundName }}" />
-    <Slider minValue="1" maxValue="106" value="{{ soundIndex }}" />
+    <Label text="{{ 'Sound Index: ' + soundIndex + ' - ' + soundName }}" class="text-center" />
+    <Slider minValue="1" maxValue="106" value="{{ soundIndex }}" class="slider" />
 
-    <!--<Label text="{{ 'Sound Delay: ' + soundDelay }}" />
-    <Slider minValue="10" maxValue="255" value="{{ soundDelay }}" />
+    <GridLayout rows="50" columns="*, *, *">
+      <Button row="0" col="0" text="Play" tap="{{ playSound }}" class="btn btn-primary" />
+      <Button row="0" col="1" text="Mute" tap="{{ mute }}" class="btn btn-primary" />
+      <Button row="0" col="2" text="Max Vol" tap="{{ setMaxVolume }}" class="btn btn-primary" />
+    </GridLayout>
 
-    <Label text="{{ 'Sound Repeat: ' + soundRepeat }}" />
-    <Slider minValue="0" maxValue="10" value="{{ soundRepeat }}" />-->
-
-    <Button row="0" col="0" text="Play sound" tap="{{ playSound }}" />
-    <Button row="0" col="1" text="Mute" tap="{{ mute }}" />
-    <Button row="0" col="2" text="Max Volume" tap="{{ setMaxVolume }}" />
+    <StackLayout class="hr-light"></StackLayout>
 
     <GridLayout rows="*, *, *, *, *" columns="*, *, *">
-      <Button row="0" col="0" text="Hello" tap="{{ playSoundHello }}" />
-      <Button row="0" col="1" text="Talk" tap="{{ playSoundConversation }}" />
-      <Button row="0" col="2" text="Bye" tap="{{ playSoundBye }}" />
+      <Button row="0" col="0" text="Hello" tap="{{ playSoundHello }}" class="btn btn-outline" />
+      <Button row="0" col="1" text="Talk" tap="{{ playSoundConversation }}" class="btn btn-outline" />
+      <Button row="0" col="2" text="Bye" tap="{{ playSoundBye }}" class="btn btn-outline" />
 
-      <Button row="1" col="0" text="Sing" tap="{{ playSoundSing }}" />
-      <Button row="1" col="1" text="Song 1" tap="{{ playSoundSong1 }}" />
-      <Button row="1" col="2" text="Song 2" tap="{{ playSoundSong2 }}" />
+      <Button row="1" col="0" text="Sing" tap="{{ playSoundSing }}" class="btn btn-outline" />
+      <Button row="1" col="1" text="Song 1" tap="{{ playSoundSong1 }}" class="btn btn-outline" />
+      <Button row="1" col="2" text="Song 2" tap="{{ playSoundSong2 }}" class="btn btn-outline" />
 
-      <Button row="2" col="0" text="Drink" tap="{{ playSoundDrink }}" />
-      <Button row="2" col="1" text="Eat" tap="{{ playSoundEat }}" />
-      <Button row="2" col="2" text="Burp" tap="{{ playSoundBurp }}" />
+      <Button row="2" col="0" text="Drink" tap="{{ playSoundDrink }}" class="btn btn-outline" />
+      <Button row="2" col="1" text="Eat" tap="{{ playSoundEat }}" class="btn btn-outline" />
+      <Button row="2" col="2" text="Burp" tap="{{ playSoundBurp }}" class="btn btn-outline" />
 
-      <Button row="3" col="0" text="Sad" tap="{{ playSoundSad }}" />
-      <Button row="3" col="1" text="Happy" tap="{{ playSoundHappy }}" />
-      <Button row="3" col="2" text="Excited" tap="{{ playSoundExcited }}" />
+      <Button row="3" col="0" text="Sad" tap="{{ playSoundSad }}" class="btn btn-outline" />
+      <Button row="3" col="1" text="Happy" tap="{{ playSoundHappy }}" class="btn btn-outline" />
+      <Button row="3" col="2" text="Excited" tap="{{ playSoundExcited }}" class="btn btn-outline" />
       
-      <Button row="4" col="0" text="Punch 1" tap="{{ playSoundPunch1 }}" />
-      <Button row="4" col="1" text="Punch 2" tap="{{ playSoundPunch2 }}" />
-      <Button row="4" col="2" text="Punch 3" tap="{{ playSoundPunch3 }}" />
+      <Button row="4" col="0" text="Punch 1" tap="{{ playSoundPunch1 }}" class="btn btn-outline" />
+      <Button row="4" col="1" text="Punch 2" tap="{{ playSoundPunch2 }}" class="btn btn-outline" />
+      <Button row="4" col="2" text="Punch 3" tap="{{ playSoundPunch3 }}" class="btn btn-outline" />
     </GridLayout>
   </StackLayout>
 </page:DrawerPage>

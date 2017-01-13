@@ -13,9 +13,9 @@
   </page:DrawerPage.sideDrawer>
 
 
-  <DockLayout>
-    <Button dock="top" text="GetPermissions" tap="{{ getPermissions }}" />
-    <Button dock="top" text="Scan" tap="{{ scan }}" />
+  <DockLayout class="m-t-5">
+    <Button dock="top" text="GetPermissions" tap="{{ getPermissions }}" class="btn btn-primary" />
+    <Button dock="top" text="Scan" tap="{{ scan }}" class="btn btn-primary" />
 
     <lv:RadListView 
         items="{{ devicesAround }}"

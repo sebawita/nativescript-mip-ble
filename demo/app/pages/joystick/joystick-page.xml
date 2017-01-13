@@ -1,7 +1,8 @@
 <page:DrawerPage navigatingTo="navigatingTo"
   xmlns:page="nativescript-telerik-ui/sidedrawer/drawerpage"
   xmlns:d="pages/drawer"
-  xmlns:ab="pages/action-bar">
+  xmlns:ab="pages/action-bar"
+  xmlns:js="nativescript-joystick">
 
   <page:DrawerPage.actionBar>
     <ab:action-bar-template />
@@ -11,11 +12,11 @@
     <d:drawer-template />
   </page:DrawerPage.sideDrawer>
 
-  <StackLayout xmlns:js="nativescript-joystick">
-    <Button text="Start" tap="{{ startJoystick }}" />
-    <Button text="Stop" tap="{{ stopJoystick }}" />
+  <StackLayout class="m-t-5">
+    <Button text="Start" tap="{{ startJoystick }}" class="btn btn-primary" />
+    <Button text="Stop" tap="{{ stopJoystick }}" class="btn btn-primary" />
 
-    <StackLayout orientation="horizontal" >
+    <StackLayout orientation="horizontal">
       <js:JoyStick
         padColor="black"
         buttonColor="white"

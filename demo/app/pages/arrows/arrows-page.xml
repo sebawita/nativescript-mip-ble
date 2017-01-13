@@ -11,20 +11,21 @@
     <d:drawer-template />
   </page:DrawerPage.sideDrawer>
 
-  <StackLayout>
-    <Label text="{{ 'Speed:' + speed}}" textWrap="true" />
-    <Slider minValue="0" maxValue="0x20" value="{{ speed }}" />
+  <StackLayout class="m-t-5">
+    <Label text="{{ 'Speed:' + speed}}" class="text-center" />
+    <Slider minValue="0" maxValue="0x20" value="{{ speed }}" class="slider" />
 
-    <Label text="{{ 'Turn Speed:' + turnSpeed}}" textWrap="true" />
-    <Slider minValue="0" maxValue="0x20" value="{{ turnSpeed }}" />
+    <Label text="{{ 'Turn Speed:' + turnSpeed}}" class="text-center" />
+    <Slider minValue="0" maxValue="0x20" value="{{ turnSpeed }}" class="slider" />
 
-    <Button text="Forward" tap="{{ moveForward }}" height="10%" />
+    <GridLayout rows="75%, 75%, 75%" columns="*, *">
+      <Button row="0" colSpan="2" text="Forward" tap="{{ moveForward }}" class="btn btn-primary" />
 
-    <DockLayout orientation="horizontal" height="10%" width="100%">
-      <Button dock="left" text="Left" tap="{{ turnLeft }}" width="49%"  />
-      <Button text="Right" tap="{{ turnRight }}" />
-    </DockLayout>
+      <Button row="1" col="0" dock="left" text="Left" tap="{{ turnLeft }}" class="btn btn-primary" />
+      <Button row="1" col="1" text="Right" tap="{{ turnRight }}" class="btn btn-primary" />
 
-    <Button text="Back" tap="{{ moveBack }}" height="10%" />
+      <Button row="2" colSpan="2" text="Back" tap="{{ moveBack }}" class="btn btn-primary" />
+    </GridLayout>
+
   </StackLayout>
 </page:DrawerPage>

@@ -12,8 +12,8 @@
     <d:drawer-template />
   </page:DrawerPage.sideDrawer>
 
-  <StackLayout>
-    <Button text="Change Color" tap="{{ changeColor }}" height="200" />
+  <StackLayout class="m-t-5">
+    <Button text="Change Color" tap="{{ changeColor }}" height="200" class="btn btn-primary" />
     <Android>
       <Label text="Left"/>
       <dd:DropDown items="{{ ledOptions }}" selectedIndex="{{ leftLED }}" class="dropdown" />

@@ -1,6 +1,6 @@
 <ActionBar android:opacity="1" title="{{title}}" class="action-bar">
   <android>
-    <NavigationButton icon="res://ic_menu_main" tap="showSlideout" />
+    <NavigationButton icon="res://ic_menu_main" tap="showSlideout" class="action-item" />
   </android>
   <ActionBar.actionItems>
     <iOS>
