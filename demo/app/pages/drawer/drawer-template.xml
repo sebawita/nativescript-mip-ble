@@ -1,0 +1,26 @@
+<drawer:RadSideDrawer id="side-drawer" drawerSize="260"
+  xmlns:drawer="nativescript-telerik-ui/sidedrawer">
+  <drawer:RadSideDrawer.drawerContent>
+  
+    <StackLayout cssClass="drawerContent">
+      <StackLayout cssClass="headerContent">
+        <Label text="Navigation Menu"/>
+      </StackLayout>
+      <ScrollView>
+        <StackLayout cssClass="drawerMenuContent">
+          <Button text="Scanner" cssClass="drawerSectionItem" tap="navigateToScanner" />
+          <Button text="Arrows" cssClass="drawerSectionItem" tap="navigateToArrows" />
+          <Button text="Accelerometer" cssClass="drawerSectionItem" tap="navigateToAccelerometer" />
+          <Button text="Joystick" cssClass="drawerSectionItem" tap="navigateToJoystick" />
+          <Button text="Sound" cssClass="drawerSectionItem" tap="navigateToSound" />
+          <Button text="Lights" cssClass="drawerSectionItem" tap="navigateToLights" />
+        </StackLayout>
+      </ScrollView>
+    </StackLayout>
+
+  </drawer:RadSideDrawer.drawerContent>
+
+  <drawer:RadSideDrawer.drawerTransition>
+    <drawer:PushTransition />
+  </drawer:RadSideDrawer.drawerTransition>
+</drawer:RadSideDrawer>

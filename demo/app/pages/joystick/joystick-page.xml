@@ -1,7 +1,6 @@
 <page:DrawerPage navigatingTo="navigatingTo"
   xmlns:page="nativescript-telerik-ui/sidedrawer/drawerpage"
-  xmlns:drawer="nativescript-telerik-ui/sidedrawer"
-  xmlns:dc="pages/drawer"
+  xmlns:d="pages/drawer"
   xmlns:ab="pages/action-bar">
 
   <page:DrawerPage.actionBar>
@@ -9,19 +8,10 @@
   </page:DrawerPage.actionBar>
 
   <page:DrawerPage.sideDrawer>
-    <drawer:RadSideDrawer id="side-drawer" drawerSize="260">
-      <drawer:RadSideDrawer.drawerContent>
-        <dc:drawer-content />
-      </drawer:RadSideDrawer.drawerContent>
-    </drawer:RadSideDrawer>
+    <d:drawer-template />
   </page:DrawerPage.sideDrawer>
 
-  <StackLayout>
-      <Label text="JoyStick will be here soon" textWrap="true" />
-  </StackLayout>
-
-
-  <!--<StackLayout xmlns:js="nativescript-joystick">
+  <StackLayout xmlns:js="nativescript-joystick">
     <Button text="Start" tap="{{ startJoystick }}" />
     <Button text="Stop" tap="{{ stopJoystick }}" />
 
@@ -39,5 +29,5 @@
         horizontal="{{turnSpeed}}">
       </js:JoyStick>
     </StackLayout>
-  </StackLayout>-->
+  </StackLayout>
 </page:DrawerPage>

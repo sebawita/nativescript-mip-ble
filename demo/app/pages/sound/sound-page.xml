@@ -1,8 +1,7 @@
 <page:DrawerPage navigatingTo="navigatingTo"
   xmlns:lv="nativescript-telerik-ui/listview"
   xmlns:page="nativescript-telerik-ui/sidedrawer/drawerpage"
-  xmlns:drawer="nativescript-telerik-ui/sidedrawer"
-  xmlns:dc="pages/drawer"
+  xmlns:d="pages/drawer"
   xmlns:ab="pages/action-bar">
 
   <page:DrawerPage.actionBar>
@@ -10,11 +9,7 @@
   </page:DrawerPage.actionBar>
 
   <page:DrawerPage.sideDrawer>
-    <drawer:RadSideDrawer id="side-drawer" drawerSize="260">
-      <drawer:RadSideDrawer.drawerContent>
-        <dc:drawer-content />
-      </drawer:RadSideDrawer.drawerContent>
-    </drawer:RadSideDrawer>
+    <d:drawer-template />
   </page:DrawerPage.sideDrawer>
 
   <StackLayout>    
