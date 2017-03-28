@@ -5,7 +5,7 @@
       "version": "2.4.0"
     },
     "tns-android": {
-      "version": "2.4.1"
+      "version": "2.5.0"
     }
   },
   "dependencies": {
@@ -16,7 +16,7 @@
     "nativescript-mip-ble": "file:..",
     "nativescript-telerik-ui": "^1.5.1",
     "nativescript-theme-core": "^1.0.2",
-    "tns-core-modules": "^2.4.4"
+    "tns-core-modules": "^2.5.1"
   },
   "devDependencies": {
     "babel-traverse": "6.21.0",
