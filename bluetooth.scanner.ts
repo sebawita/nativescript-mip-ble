@@ -33,7 +33,10 @@ export class BluetoothScanner {
         });
     }
 
-    checkIfWowWeeMiP(periperhal: any) {
+    checkIfWowWeeMiP(periperhal: any): boolean {
+        if(!periperhal.advertisement)
+            return true;
+
         const advert = base64_decode(periperhal.advertisement);
 
         /* check if a WowWee device
