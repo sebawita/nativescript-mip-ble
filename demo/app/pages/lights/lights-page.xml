@@ -1,33 +1,35 @@
-<page:DrawerPage navigatingTo="navigatingTo"
-  xmlns:page="nativescript-telerik-ui/sidedrawer/drawerpage"
+<Page navigatingTo="navigatingTo"
+  xmlns:lv="nativescript-telerik-ui/listview"
   xmlns:d="pages/drawer"
   xmlns:ab="pages/action-bar"
   xmlns:drawer="nativescript-telerik-ui/sidedrawer"
   xmlns:dd="nativescript-drop-down">
 
-  <page:DrawerPage.actionBar>
-    <ab:action-bar-template />
-  </page:DrawerPage.actionBar>
+  <ab:action-bar-template />
 
-  <page:DrawerPage.sideDrawer>
-    <drawer:RadSideDrawer id="side-drawer" drawerSize="260"
-      xmlns:drawer="nativescript-telerik-ui/sidedrawer">
-      <drawer:RadSideDrawer.drawerContent>
-        <d:drawer-content />
-      </drawer:RadSideDrawer.drawerContent>
-      <drawer:RadSideDrawer.drawerTransition>
-        <drawer:PushTransition />
-      </drawer:RadSideDrawer.drawerTransition>
-    </drawer:RadSideDrawer>
-  </page:DrawerPage.sideDrawer>
+  <drawer:RadSideDrawer
+    id="side-drawer"
+    drawerSize="260"
+    xmlns:drawer="nativescript-telerik-ui/sidedrawer">
 
-  <StackLayout class="m-t-5">
-    <Button text="Change Color" tap="{{ changeColor }}" height="200" class="btn btn-primary" />
-    <Android>
-      <Label text="Left"/>
-      <dd:DropDown items="{{ ledOptions }}" selectedIndex="{{ leftLED }}" class="dropdown" />
-      <Label text="Right"/>
-      <dd:DropDown items="{{ ledOptions }}" selectedIndex="{{ rightLED }}" class="dropdown" />
-    </Android>
-  </StackLayout>
-</page:DrawerPage>
+    <drawer:RadSideDrawer.drawerContent>
+      <d:drawer-content />
+    </drawer:RadSideDrawer.drawerContent>
+
+    <drawer:RadSideDrawer.drawerTransition>
+      <drawer:PushTransition />
+    </drawer:RadSideDrawer.drawerTransition>
+
+    <drawer:RadSideDrawer.mainContent>
+      <StackLayout class="m-t-5">
+        <Button text="Change Color" tap="{{ changeColor }}" height="200" class="btn btn-primary" />
+        <Android>
+          <Label text="Left"/>
+          <dd:DropDown items="{{ ledOptions }}" selectedIndex="{{ leftLED }}" class="dropdown" />
+          <Label text="Right"/>
+          <dd:DropDown items="{{ ledOptions }}" selectedIndex="{{ rightLED }}" class="dropdown" />
+        </Android>
+      </StackLayout>
+    </drawer:RadSideDrawer.mainContent>
+  </drawer:RadSideDrawer>
+</Page>

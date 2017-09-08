@@ -1,29 +1,30 @@
-<page:DrawerPage
-  navigatingTo="navigatingTo"
-  xmlns:page="nativescript-telerik-ui/sidedrawer/drawerpage"
+<Page navigatingTo="navigatingTo"
+  xmlns:lv="nativescript-telerik-ui/listview"
   xmlns:d="pages/drawer"
   xmlns:ab="pages/action-bar"
   xmlns:drawer="nativescript-telerik-ui/sidedrawer">
 
-  <page:DrawerPage.actionBar>
-    <ab:action-bar-template />
-  </page:DrawerPage.actionBar>
+  <ab:action-bar-template />
 
-  <page:DrawerPage.sideDrawer>
-    <drawer:RadSideDrawer id="side-drawer" drawerSize="260"
-      xmlns:drawer="nativescript-telerik-ui/sidedrawer">
-      <drawer:RadSideDrawer.drawerContent>
-        <d:drawer-content />
-      </drawer:RadSideDrawer.drawerContent>
-      <drawer:RadSideDrawer.drawerTransition>
-        <drawer:PushTransition />
-      </drawer:RadSideDrawer.drawerTransition>
-    </drawer:RadSideDrawer>
-  </page:DrawerPage.sideDrawer>
+  <drawer:RadSideDrawer
+    id="side-drawer"
+    drawerSize="260"
+    xmlns:drawer="nativescript-telerik-ui/sidedrawer">
 
-  <StackLayout class="m-t-5">
-    <Button text="Start" tap="{{ startAccelerometer }}" class="btn btn-primary" />
-    <Button text="Stop" tap="{{ stopAccelerometer }}" class="btn btn-primary" />
-    <!--<Button text="Switch Gear" tap="{{ switchGear }}" />-->
-  </StackLayout>
-</page:DrawerPage>
+    <drawer:RadSideDrawer.drawerContent>
+      <d:drawer-content />
+    </drawer:RadSideDrawer.drawerContent>
+
+    <drawer:RadSideDrawer.drawerTransition>
+      <drawer:PushTransition />
+    </drawer:RadSideDrawer.drawerTransition>
+
+    <drawer:RadSideDrawer.mainContent>
+      <StackLayout class="m-t-5">
+        <Button text="Start" tap="{{ startAccelerometer }}" class="btn btn-primary" />
+        <Button text="Stop" tap="{{ stopAccelerometer }}" class="btn btn-primary" />
+        <!--<Button text="Switch Gear" tap="{{ switchGear }}" />-->
+      </StackLayout>
+    </drawer:RadSideDrawer.mainContent>
+  </drawer:RadSideDrawer>
+</Page>

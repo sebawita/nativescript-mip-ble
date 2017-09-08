@@ -52,7 +52,8 @@ export class MipController  {
             peripheralUUID: this.UUID,
             serviceUUID: 'ffe5',
             characteristicUUID: 'ffe9',
-            value: instructionCode + "," + instructionParams
+        //  value: '0x71,0xA0,0xFF <- drive forward at speed 10 and for 255*7 ms 
+            value: instructionCode + ',' + instructionParams
         }
 
         //Send the call via bluetooth

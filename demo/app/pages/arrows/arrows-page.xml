@@ -1,40 +1,42 @@
-<page:DrawerPage navigatingTo="navigatingTo"
-  xmlns:page="nativescript-telerik-ui/sidedrawer/drawerpage"
+<Page navigatingTo="navigatingTo"
+  xmlns:lv="nativescript-telerik-ui/listview"
   xmlns:d="pages/drawer"
   xmlns:ab="pages/action-bar"
   xmlns:drawer="nativescript-telerik-ui/sidedrawer">
 
-  <page:DrawerPage.actionBar>
-    <ab:action-bar-template />
-  </page:DrawerPage.actionBar>
+  <ab:action-bar-template />
 
-  <page:DrawerPage.sideDrawer>
-    <drawer:RadSideDrawer id="side-drawer" drawerSize="260"
-      xmlns:drawer="nativescript-telerik-ui/sidedrawer">
-      <drawer:RadSideDrawer.drawerContent>
-        <d:drawer-content />
-      </drawer:RadSideDrawer.drawerContent>
-      <drawer:RadSideDrawer.drawerTransition>
-        <drawer:PushTransition />
-      </drawer:RadSideDrawer.drawerTransition>
-    </drawer:RadSideDrawer>
-  </page:DrawerPage.sideDrawer>
+  <drawer:RadSideDrawer
+    id="side-drawer"
+    drawerSize="260"
+    xmlns:drawer="nativescript-telerik-ui/sidedrawer">
 
-  <StackLayout class="m-t-5">
-    <Label text="{{ 'Speed:' + speed}}" class="text-center" />
-    <Slider minValue="0" maxValue="0x20" value="{{ speed }}" class="slider" />
+    <drawer:RadSideDrawer.drawerContent>
+      <d:drawer-content />
+    </drawer:RadSideDrawer.drawerContent>
 
-    <Label text="{{ 'Turn Speed:' + turnSpeed}}" class="text-center" />
-    <Slider minValue="0" maxValue="0x20" value="{{ turnSpeed }}" class="slider" />
+    <drawer:RadSideDrawer.drawerTransition>
+      <drawer:PushTransition />
+    </drawer:RadSideDrawer.drawerTransition>
 
-    <GridLayout rows="75%, 75%, 75%" columns="*, *">
-      <Button row="0" colSpan="2" text="Forward" tap="{{ moveForward }}" class="btn btn-primary" />
+    <drawer:RadSideDrawer.mainContent>
+      <StackLayout class="m-t-5">
+        <Label text="{{ 'Speed:' + speed}}" class="text-center" />
+        <Slider minValue="0" maxValue="0x20" value="{{ speed }}" class="slider" />
 
-      <Button row="1" col="0" dock="left" text="Left" tap="{{ turnLeft }}" class="btn btn-primary" />
-      <Button row="1" col="1" text="Right" tap="{{ turnRight }}" class="btn btn-primary" />
+        <Label text="{{ 'Turn Speed:' + turnSpeed}}" class="text-center" />
+        <Slider minValue="0" maxValue="0x20" value="{{ turnSpeed }}" class="slider" />
 
-      <Button row="2" colSpan="2" text="Back" tap="{{ moveBack }}" class="btn btn-primary" />
-    </GridLayout>
+        <GridLayout rows="75%, 75%, 75%" columns="*, *">
+          <Button row="0" colSpan="2" text="Forward" tap="{{ moveForward }}" class="btn btn-primary" />
 
-  </StackLayout>
-</page:DrawerPage>
+          <Button row="1" col="0" dock="left" text="Left" tap="{{ turnLeft }}" class="btn btn-primary" />
+          <Button row="1" col="1" text="Right" tap="{{ turnRight }}" class="btn btn-primary" />
+
+          <Button row="2" colSpan="2" text="Back" tap="{{ moveBack }}" class="btn btn-primary" />
+        </GridLayout>
+
+      </StackLayout>
+    </drawer:RadSideDrawer.mainContent>
+  </drawer:RadSideDrawer>
+</Page>

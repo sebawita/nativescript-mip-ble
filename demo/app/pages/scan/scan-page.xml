@@ -1,46 +1,45 @@
-<page:DrawerPage navigatingTo="navigatingTo"
+<Page navigatingTo="navigatingTo"
   xmlns:lv="nativescript-telerik-ui/listview"
-  xmlns:page="nativescript-telerik-ui/sidedrawer/drawerpage"
   xmlns:d="pages/drawer"
   xmlns:ab="pages/action-bar"
   xmlns:drawer="nativescript-telerik-ui/sidedrawer">
 
-  <page:DrawerPage.actionBar>
-    <ab:action-bar-template />
-  </page:DrawerPage.actionBar>
+  <ab:action-bar-template />
 
-  <page:DrawerPage.sideDrawer>
-    <drawer:RadSideDrawer id="side-drawer" drawerSize="260"
-      xmlns:drawer="nativescript-telerik-ui/sidedrawer">
-      <drawer:RadSideDrawer.drawerContent>
-        <d:drawer-content />
-      </drawer:RadSideDrawer.drawerContent>
-      <drawer:RadSideDrawer.drawerTransition>
-        <drawer:PushTransition />
-      </drawer:RadSideDrawer.drawerTransition>
-    </drawer:RadSideDrawer>
-  </page:DrawerPage.sideDrawer>
+  <drawer:RadSideDrawer
+    id="side-drawer"
+    drawerSize="260"
+    xmlns:drawer="nativescript-telerik-ui/sidedrawer">
 
+    <drawer:RadSideDrawer.drawerContent>
+      <d:drawer-content />
+    </drawer:RadSideDrawer.drawerContent>
 
-  <DockLayout class="m-t-5">
-    <Button dock="top" text="GetPermissions" tap="{{ getPermissions }}" class="btn btn-primary" />
-    <Button dock="top" text="Scan" tap="{{ scan }}" class="btn btn-primary" />
+    <drawer:RadSideDrawer.drawerTransition>
+      <drawer:PushTransition />
+    </drawer:RadSideDrawer.drawerTransition>
 
-    <lv:RadListView 
-        items="{{ devicesAround }}"
-        pullToRefresh="true" pullToRefreshInitiated="{{ scan }}"
-        itemTap="{{ connect }}">
-      <lv:RadListView.listViewLayout>
-        <lv:ListViewLinearLayout scrollDirection="Vertical"/>
-      </lv:RadListView.listViewLayout>
-      <lv:RadListView.itemTemplate>
-        <StackLayout orientation="vertical" padding="5 10 5 10"  style="background-color: #7fff7f;">
-          <Label text="{{ 'UUID:' + UUID }}" />
-          <Label text="{{ 'name:' + name }}" />
-          <Label text="{{ 'state:' + state }}" />
-        </StackLayout>
-      </lv:RadListView.itemTemplate>
-    </lv:RadListView>
-  </DockLayout>
+    <drawer:RadSideDrawer.mainContent>
+      <DockLayout class="m-t-5">
+        <Button dock="top" text="GetPermissions" tap="{{ getPermissions }}" class="btn btn-primary" />
+        <Button dock="top" text="Scan" tap="{{ scan }}" class="btn btn-primary" />
 
-</page:DrawerPage>
+        <lv:RadListView 
+            items="{{ devicesAround }}"
+            pullToRefresh="true" pullToRefreshInitiated="{{ scan }}"
+            itemTap="{{ connect }}">
+          <lv:RadListView.listViewLayout>
+            <lv:ListViewLinearLayout scrollDirection="Vertical"/>
+          </lv:RadListView.listViewLayout>
+          <lv:RadListView.itemTemplate>
+            <StackLayout orientation="vertical" padding="5 10 5 10"  style="background-color: #7fff7f;">
+              <Label text="{{ 'UUID:' + UUID }}" />
+              <Label text="{{ 'name:' + name }}" />
+              <Label text="{{ 'state:' + state }}" />
+            </StackLayout>
+          </lv:RadListView.itemTemplate>
+        </lv:RadListView>
+      </DockLayout>
+    </drawer:RadSideDrawer.mainContent>
+  </drawer:RadSideDrawer>
+</Page>
